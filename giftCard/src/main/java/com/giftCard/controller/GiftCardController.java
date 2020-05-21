@@ -40,7 +40,6 @@ public class GiftCardController {
 	public void updateDeliveryStatus() {
 
 	}
-
 	
 	@RequestMapping(value = "/commissionReport", method = RequestMethod.POST)
 	public void generateCommissionReport() {
@@ -49,7 +48,6 @@ public class GiftCardController {
 	
 	@RequestMapping(value = "/addGiftCardOrder", method = RequestMethod.POST)
 	public String addGiftOrder(@RequestBody @Valid GiftCardOrderDetails giftCardOrderDetails) {
-		
 			Boolean value = giftCardOrderService.saveGiftCardOrderDetail(giftCardOrderDetails);
 			if(value) {
 				return "ok";

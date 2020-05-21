@@ -32,6 +32,7 @@ import com.google.gson.Gson;
  * @author krishnarjun.pampana
  *
  */
+
 @RunWith(MockitoJUnitRunner.class)
 public class GiftCardControllerTest {
 
@@ -54,44 +55,61 @@ public class GiftCardControllerTest {
 		this.mockMvc.perform(get("/")).andExpect(status().isOk());
 	}
 
+	/**
+	 * This test is to perform whether the new user is Registered or not 
+	 * @throws Exception
+	 */
 	@Test
 	public void testRegisterUser() throws Exception {
-		
+		this.mockMvc.perform(get("/registerUser")).andExpect(status().isOk()).andExpect(view().name("ok"));	
 	}
 
 	@Test
 	public void testRegisterUserBuyer() throws Exception {
-		
+		this.mockMvc.perform(get("/registerUserBuyer")).andExpect(status().isOk()).andExpect(view().name("ok"));		
 	}
 
 	@Test
 	public void testRegisterUserRecipient() throws Exception {
-		
+		this.mockMvc.perform(get("/registerUserRecipient")).andExpect(status().isOk()).andExpect(view().name("ok"));		
 	}
 	
+	/**
+	 * This test is to perform whether the login user is autherized or not 
+	 * @throws Exception
+	 */
 	@Test
 	public void testLoginUser() throws Exception {
-		
+		this.mockMvc.perform(get("/loginUser")).andExpect(status().isOk()).andExpect(view().name("ok"));		
 	}
 
 	@Test
 	public void testLoginUserBuyer() throws Exception {
+		this.mockMvc.perform(get("/loginUserBuyer")).andExpect(status().isOk()).andExpect(view().name("ok"));		
 		
 	}
 
 	@Test
-	public void testLoginUserRecipent() throws Exception {
-		
+	public void testLoginUserRecipient() throws Exception {
+		this.mockMvc.perform(get("/loginUserRecipient")).andExpect(status().isOk()).andExpect(view().name("ok"));				
 	}
 	
+	/**
+	 * This test is to check the delivery status of the Recipient 
+	 * @throws Exception
+	 */
 	@Test
 	public void testDeliveryStatus() throws Exception {
-		
+		this.mockMvc.perform(get("/deliveryStatus")).andExpect(status().isOk()).andExpect(view().name("ok"));				
 	}
 
+	/**
+	 * This test is to check the commission obtained for the services or not
+	 * @throws Exception
+	 */
 	@Test
 	public void testCommissionReport() throws Exception {
-		
+		this.mockMvc.perform(get("/commissionReport")).andExpect(status().isOk()).andExpect(view().name("ok"));				
 	}
 	
 	@Test
