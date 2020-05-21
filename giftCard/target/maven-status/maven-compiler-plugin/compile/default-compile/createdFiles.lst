@@ -1,0 +1,11 @@
+com\giftCard\entity\GiftCardOrderDetails.class
+com\giftCard\config\AppConfig.class
+com\giftCard\config\Application.class
+com\giftCard\service\GiftCardOrderServiceImpl.class
+com\giftCard\config\DBConfig.class
+com\giftCard\config\WebAppInitializer.class
+com\giftCard\service\GiftCardOrderService.class
+com\giftCard\dao\GiftCardOrderDetailsDAO.class
+com\giftCard\dao\GiftCardOrdersDAOImpl.class
+com\giftCard\controller\GiftCardController.class
+com\giftCard\entity\ShippingAddress.class
