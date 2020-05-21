@@ -61,7 +61,7 @@ public class GiftCardControllerTest {
 	 */
 	@Test
 	public void testRegisterUser() throws Exception {
-		this.mockMvc.perform(get("/registerUser")).andExpect(status().isOk()).andExpect(view().name("ok"));	
+		this.mockMvc.perform(get("/registerUser")).andExpect(status().isOk()).andExpect(view().name("ok"));
 	}
 
 	@Test
