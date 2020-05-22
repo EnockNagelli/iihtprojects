@@ -33,7 +33,7 @@ import com.google.gson.Gson;
 
 @SuppressWarnings("deprecation")
 @RunWith(MockitoJUnitRunner.class)
-public class GiftCardControllerTest {
+public class GiftVoucherControllerTest {
 
 	@Mock
 	private GiftVoucherOrderService giftVoucherOrderService;

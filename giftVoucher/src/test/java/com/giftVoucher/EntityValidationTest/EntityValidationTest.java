@@ -20,8 +20,8 @@ import com.giftVoucher.model.Gift;
 import com.giftVoucher.model.Recipient;
 import com.giftVoucher.UtilTestClass.MasterData;
 
-public class EntityValidationTest {
-
+public class EntityValidationTest 
+{
     private Validator validator;
 
     @Before
