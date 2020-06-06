@@ -20,29 +20,28 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.giftCard.UtilTestClass.MasterData;
-import com.giftCard.controller.GiftCardController;
-import com.giftCard.entity.GiftCardOrderDetails;
-//import com.giftCard.entity.ShippingAddress;
-import com.giftCard.service.GiftCardOrderService;
+import com.forum.ForumApp.UtilTestClass.MasterData;
+import com.forum.ForumApp.controller.VisitorController;
+import com.forum.ForumApp.entity.Posts;
+import com.forum.ForumApp.services.PostService;
 import com.google.gson.Gson;
 
-
+@SuppressWarnings("deprecation")
 @RunWith(MockitoJUnitRunner.class)
 public class VisitorControllerTest {
 
 	@Mock
-	private GiftCardOrderService giftCardOrderService;
+	private PostService postService;
 
 	@InjectMocks
-	private GiftCardController giftCardController;
+	private VisitorController visitorController;
 
 	private MockMvc mockMvc;
 
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-		this.mockMvc = MockMvcBuilders.standaloneSetup(giftCardController).build();
+		this.mockMvc = MockMvcBuilders.standaloneSetup(visitorController).build();
 	}
 
 	@Test
@@ -108,27 +107,30 @@ public class VisitorControllerTest {
 	}
 	
 	@Test
-	public void testViewAllOrdersApi() throws Exception {
-		List<GiftCardOrderDetails> giftOrderList = new ArrayList<>();
-		giftOrderList.add(new GiftCardOrderDetails());
-		giftOrderList.add(new GiftCardOrderDetails());
-		when(giftCardOrderService.getAllOrderDetails()).thenReturn((List<GiftCardOrderDetails>) giftOrderList);
+	public void testViewAllOrdersApi() throws Exception
+	{
+		List<Posts> posts = new ArrayList<>();
+		posts.add(new Posts());
+		posts.add(new Posts());
+		when(postService.getAllPosts()).thenReturn((List<Posts>) posts);
 		this.mockMvc.perform(get("/viewAllOrders")).andExpect(status().isOk()).andExpect(view().name("ok"));
 	}
 
 	@Test
-	public void testViewAllOrdersApiCase1() throws Exception {
-		when(giftCardOrderService.getAllOrderDetails()).thenReturn(null);
+	public void testViewAllOrdersApiCase1() throws Exception 
+	{
+		when(postService.getAllPosts()).thenReturn(null);
 		this.mockMvc.perform(get("/viewAllOrders")).andExpect(status().isOk())
 				.andExpect(view().name("No Records Found"));
 	}
 	
 	@Test
-	public void testSaveOrdersApiTestCase1() throws Exception {
+	public void testSaveOrdersApiTestCase1() throws Exception 
+	{
 		Gson gson = new Gson();
-		when(giftCardOrderService.saveGiftCardOrderDetail(MasterData.getDetails())).thenReturn(false);
+		when(postService.savePost(MasterData.getPostDetails())).thenReturn(false);
 		this.mockMvc
-				.perform(post("/addGiftCardOrder").content(gson.toJson(MasterData.getDetails()))
+				.perform(post("/addGiftCardOrder").content(gson.toJson(MasterData.getPostDetails()))
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andExpect(view().name("record not saved"));
 	}

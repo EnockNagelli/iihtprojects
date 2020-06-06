@@ -18,6 +18,7 @@ import com.forum.ForumApp.dao.PostDao;
 import com.forum.ForumApp.dao.impl.PostDaoImpl;
 import com.forum.ForumApp.entity.Posts;
 
+@SuppressWarnings("deprecation")
 @RunWith(MockitoJUnitRunner.class)
 public class PostServiceImplTest {
 	

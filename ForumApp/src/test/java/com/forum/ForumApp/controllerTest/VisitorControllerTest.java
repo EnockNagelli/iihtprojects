@@ -22,6 +22,7 @@ import com.forum.ForumApp.controller.VisitorController;
 import com.forum.ForumApp.services.PostService;
 import com.google.gson.Gson;
 
+@SuppressWarnings("deprecation")
 @RunWith(MockitoJUnitRunner.class)
 public class VisitorControllerTest {
 
@@ -64,7 +65,7 @@ public class VisitorControllerTest {
 	public void testSaveUsersApiTestCase1() throws Exception 
 	{
 		Gson gson = new Gson();
-		when(postService.savePost(MasterData.getPostDetails())).thenReturn(0);
+		when(postService.savePost(MasterData.getPostDetails())).thenReturn(true);
 		this.mockMvc
 				.perform(post("/addUser").content(gson.toJson(MasterData.getPostDetails()))
 						.contentType(MediaType.APPLICATION_JSON))
