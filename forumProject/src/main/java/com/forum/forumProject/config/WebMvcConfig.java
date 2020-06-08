@@ -10,12 +10,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan(basePackages="com.forum.forumProject")
 @EnableWebMvc
-public class MvcConfiguration extends WebMvcConfigurerAdapter{
-
+@ComponentScan(basePackages="com.forum.forumProject")
+public class WebMvcConfig extends WebMvcConfigurerAdapter
+{
 	@Bean
-	public ViewResolver getViewResolver(){
+	public ViewResolver getViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
