@@ -1,0 +1,5 @@
+com\giftCard\FunctionalTestCases\GiftCardControllerTest.class
+com\giftCard\serviceImplTest\GiftOrderServiceImplTest.class
+com\giftCard\DBConnectivityTestCases\DBConnectionTest.class
+com\giftCard\EntityValidationTest\EntityValidationTest.class
+com\giftCard\UtilTestClass\MasterData.class
