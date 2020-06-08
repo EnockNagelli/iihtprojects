@@ -58,14 +58,14 @@ public class VisitorControllerTest {
 	}
 
 	@Test
-	public void testViewAllPostsCase() throws Exception {
+	public void testViewAllPostsCase1() throws Exception {
 		when(postService.getAllPosts()).thenReturn(null);
 		this.mockMvc.perform(get("/viewPosts")).andExpect(status().isOk())
 				.andExpect(view().name("No Records Found"));
 	}
 
 	@Test
-	public void testSavePostsTestCase1() throws Exception 
+	public void testSavePostsTestCase2() throws Exception 
 	{
 		Gson gson = new Gson();
 		when(postService.savePost(MasterData.getPostDetails())).thenReturn(true);
