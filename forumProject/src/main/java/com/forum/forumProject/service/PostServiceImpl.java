@@ -17,8 +17,9 @@ public class PostServiceImpl implements PostService
 	private PostDao postDao;
 	
 	@Override
-	public void savePost(Posts posts) {
+	public Boolean savePost(Posts posts) {
 		postDao.savePost(posts);
+		return true;
 	}
 
 	@Override

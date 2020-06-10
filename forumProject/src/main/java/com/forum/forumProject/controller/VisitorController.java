@@ -37,7 +37,7 @@ public class VisitorController
 	public ModelAndView visitorPage(HttpServletResponse response) throws IOException
 	{
 		System.out.println("Server Started. Inside the controller");
-		return new ModelAndView("login", "posts", new Posts());
+		return new ModelAndView("visitor", "posts", new Posts());
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------

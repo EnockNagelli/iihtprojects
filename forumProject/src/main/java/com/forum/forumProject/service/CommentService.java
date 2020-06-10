@@ -6,7 +6,7 @@ import com.forum.forumProject.entity.Comments;
 
 public interface CommentService 
 {
-	public void saveComment(Comments comments);
+	public Boolean saveComment(Comments comments);
 	
 	public List<Comments> getAllComments();
 }

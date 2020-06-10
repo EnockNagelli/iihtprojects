@@ -23,6 +23,6 @@ public class PostDaoImpl implements PostDao
 
 	@Override
 	public void savePost(Posts posts) {
-		sessionFactory.getCurrentSession().persist(posts);
+		sessionFactory.getCurrentSession().persist(posts); 
 	}    
 }

@@ -6,7 +6,7 @@ import com.forum.forumProject.entity.Posts;
 
 public interface PostService 
 {
-	public void savePost(Posts posts);
+	public Boolean savePost(Posts posts);
 	
 	public List<Posts> getAllPosts();
 }

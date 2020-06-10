@@ -6,9 +6,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +34,7 @@ import com.google.gson.Gson;
 
 @SuppressWarnings("deprecation")
 @RunWith(MockitoJUnitRunner.class)
-public class VisitorControllerTest {
+public class TestController {
 
 	@Mock
 	private PostService postService;
@@ -48,37 +50,55 @@ public class VisitorControllerTest {
 
 	private MockMvc mockMvc;
 
+	//-------------------------------------------------------------------------------------------------------------------
+	@Before
+	public void init() {
+		MockitoAnnotations.initMocks(this);
+	}
+
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 		this.mockMvc = MockMvcBuilders.standaloneSetup(visitorController).build();
 	}
 
+	//-------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testLoadingPageUrl() throws Exception {
 		this.mockMvc.perform(get("/")).andExpect(status().isOk());
 	}
-	
+		
+	//-------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testAddPost() throws Exception {
 		this.mockMvc.perform(get("/addPost")).andExpect(status().isOk()).andExpect(view().name("ok"));				
 	}
 
 	@Test
-	public void testAddComments() throws Exception {
-		this.mockMvc.perform(get("/addComments")).andExpect(status().isOk()).andExpect(view().name("ok"));				
-	}
-	
-	//-------------------------------------------------------------------------------------------------------------------
-	@Test
 	public void testSavePosts() throws Exception 
 	{
+		boolean value = postService.savePost(MasterData.getPostDetails());
+		File file = new File("output_revised.txt");
+	    FileUtils.write(file, "\ntestSavePosts="+(value ? true : false), true); 
+		
+		//Gson gson = new Gson();
+		//when(postService.savePost(MasterData.getPostDetails())).thenReturn(false);
+		//this.mockMvc
+		//		.perform(post("/savePost").content(gson.toJson(MasterData.getPostDetails()))
+		//				.contentType(MediaType.APPLICATION_JSON))
+		//		.andExpect(status().isOk()).andExpect(view().name("record not saved"));
+	}
+
+	@Test
+	public void testSavePostsCase() throws Exception 
+	{
 		Gson gson = new Gson();
-		when(postService.savePost(MasterData.getPostDetails())).thenReturn(false);
+		when(postService.savePost(MasterData.getPostDetails())).thenReturn(true);
 		this.mockMvc
-				.perform(post("/savePost").content(gson.toJson(MasterData.getPostDetails()))
+				.perform(post("/addPost").content(gson.toJson(MasterData.getPostDetails()))
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andExpect(view().name("record not saved"));
+
 	}
 
 	@Test
@@ -91,26 +111,20 @@ public class VisitorControllerTest {
 	}	
 	
 	@Test
-	public void testViewAllPostsCase1() throws Exception 
+	public void testViewAllPostsCase() throws Exception 
 	{
 		when(postService.getAllPosts()).thenReturn(null);
 		this.mockMvc.perform(get("/viewPosts")).andExpect(status().isOk())
 				.andExpect(view().name("No Records Found"));
 	}
-
-	@Test
-	public void testSavePostsTestCase2() throws Exception 
-	{
-		Gson gson = new Gson();
-		when(postService.savePost(MasterData.getPostDetails())).thenReturn(true);
-		this.mockMvc
-				.perform(post("/addPost").content(gson.toJson(MasterData.getPostDetails()))
-						.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk()).andExpect(view().name("record not saved"));
-
-	}
 	
 	//-------------------------------------------------------------------------------------------------------------------
+	@Test
+	public void testAddComments() throws Exception {
+		this.mockMvc.perform(get("/addComments")).andExpect(status().isOk()).andExpect(view().name("ok"));				
+	}
+	
+	
 	@Test
 	public void testSaveComments() throws Exception 
 	{
@@ -120,6 +134,18 @@ public class VisitorControllerTest {
 				.perform(post("/saveComment").content(gson.toJson(MasterData.getCommentDetails()))
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andExpect(view().name("record not saved"));
+	}
+
+	@Test
+	public void testSaveCommentsCase() throws Exception 
+	{
+		Gson gson = new Gson();
+		when(postService.savePost(MasterData.getPostDetails())).thenReturn(true);
+		this.mockMvc
+				.perform(post("/addPost").content(gson.toJson(MasterData.getPostDetails()))
+						.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andExpect(view().name("record not saved"));
+
 	}
 
 	//-------------------------------------------------------------------------------------------------------------------
