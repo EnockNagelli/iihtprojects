@@ -1,0 +1,3 @@
+testPasswordLength=true
+testUserNameLength=true
+testActiveUser=true

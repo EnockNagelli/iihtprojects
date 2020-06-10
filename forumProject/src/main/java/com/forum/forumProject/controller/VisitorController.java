@@ -32,32 +32,24 @@ public class VisitorController
 	@Autowired
 	private DiscussionService discussionService;
 	
+	//--------------------------------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView visitorPage(HttpServletResponse response) throws IOException
 	{
-		System.out.println("Inside the controller");
-		
-		return new ModelAndView("visitor", "posts", new Posts());
+		System.out.println("Server Started. Inside the controller");
+		return new ModelAndView("login", "posts", new Posts());
 	}
-	
+
+	//--------------------------------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/addPost", method = RequestMethod.GET)
 	public ModelAndView addPost() 
 	{
-		//System.out.println("Inside the controller : Add Post");
 		return new ModelAndView("addPost");
-	}
-
-	@RequestMapping(value = "/addComments", method = RequestMethod.GET)
-	public ModelAndView postComments() 
-	{
-		//System.out.println("Inside the controller : Add Comment");
-		return new ModelAndView("addComment");
 	}
 
 	@RequestMapping(value = "/savePost", method = RequestMethod.POST)
 	public String savePost(HttpServletRequest request) 
 	{
-		//System.out.println("Inside the controller : Save Post");
 		String title = request.getParameter("vtitle");
 		String tags = request.getParameter("vtags");
 		String postDescription = request.getParameter("vpost");
@@ -72,22 +64,6 @@ public class VisitorController
 		return "visitor";
 	}
 
-	@RequestMapping(value = "/saveComment", method = RequestMethod.POST)
-	public String saveComments(HttpServletRequest request) 
-	{
-		String visitorComment = request.getParameter("vcomments");
-		String tags = request.getParameter("vtags");
-		
-		Comments comments = new Comments();
-
-		comments.setTags(tags);
-		comments.setVisitorComment(visitorComment);
-		
-		commentService.saveComment(comments);
-		 
-		return "visitor";
-	}
-	
 	@RequestMapping(value = "/viewPosts", method = RequestMethod.GET)
 	public ModelAndView getAllPosts() 
 	{
@@ -107,6 +83,30 @@ public class VisitorController
 		return md;
 	}
 	
+	//--------------------------------------------------------------------------------------------------------------------
+	@RequestMapping(value = "/addComments", method = RequestMethod.GET)
+	public ModelAndView postComments() 
+	{
+		return new ModelAndView("addComment");
+	}
+
+	@RequestMapping(value = "/saveComment", method = RequestMethod.POST)
+	public String saveComments(HttpServletRequest request) 
+	{
+		String visitorComment = request.getParameter("vcomments");
+		String tags = request.getParameter("vtags");
+		
+		Comments comments = new Comments();
+
+		comments.setTags(tags);
+		comments.setVisitorComment(visitorComment);
+		
+		commentService.saveComment(comments);
+		 
+		return "visitor";
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/viewDiscussion", method = RequestMethod.GET)
 	public ModelAndView viewAllDiscussionTitles() 
 	{

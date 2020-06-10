@@ -19,14 +19,23 @@
         </p>
  -->
         <div class="container">
-			<br><br>
-			<h1><p class="bg-primary text-white text-center">Online Forum Application</p></h1><br>
+			<br>
+				<!-- <p class="bg-danger text-white text-center form-rounded"><b>Online Forum Application</b></p><br> -->
+<!-- 			<div class="card bg-danger text-white text-center form-rounded" style="width: 70rem; height: 4rem">
+    			<div class="card-body">
+    				<h1><b>Online Forum Application</b></h1>
+    			</div>
+  			</div><br><br> -->
+  			
+   			<div style="height: 100px;">
+				<div class="bg-danger h-50 d-inline-block text-white text-center form-rounded" style="width: 1120px;"><h2><b>Online Forum Application</b><h2></div>
+			</div>
 			<div class="row">
-				<div class="col-sm-4">
-					<a href="addPost" 		 class="btn btn-info btn-md btn-block" role="button">Add Post</a><br><br>
-					<a href="viewPosts" 	 class="btn btn-info btn-md btn-block" role="button">View Posts</a><br><br>
-					<a href="addComments" 	 class="btn btn-info btn-md btn-block" role="button">Add Comments</a><br><br>
-					<a href="viewDiscussion" class="btn btn-info btn-md btn-block" role="button">View Discussion</a><br><br><br>
+				<div class="col-sm-3">
+					<a href="addPost" 		 class="btn btn-info btn-md btn-block" role="button"><b>Add Post</b></a><br>
+					<a href="viewPosts" 	 class="btn btn-info btn-md btn-block" role="button"><b>View Posts</b></a><br>
+					<a href="addComments" 	 class="btn btn-info btn-md btn-block" role="button"><b>Add Comments</b></a><br>
+					<a href="viewDiscussion" class="btn btn-info btn-md btn-block" role="button"><b>View Discussion</b></a><br><br>
 				</div>
 			</div>
 			<h1><p class="bg-primary text-white text-right">IIHT</p></h1><br>

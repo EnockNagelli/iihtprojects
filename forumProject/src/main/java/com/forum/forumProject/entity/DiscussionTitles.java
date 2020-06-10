@@ -1,5 +1,7 @@
 package com.forum.forumProject.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +12,10 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "DiscussionTitles")
-public class DiscussionTitles
+public class DiscussionTitles implements Serializable
 {
+	private static final long serialVersionUID = -6323764382950867829L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "titleId")
@@ -23,7 +27,6 @@ public class DiscussionTitles
 
 	public DiscussionTitles() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getTitleId() {

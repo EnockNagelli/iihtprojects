@@ -88,8 +88,8 @@ public class VisitorControllerTest {
 		posts.add(new Posts());
 		when(postService.getAllPosts()).thenReturn((List<Posts>) posts);
 		this.mockMvc.perform(get("/viewPosts")).andExpect(status().isOk()).andExpect(view().name("ok"));
-	}
-
+	}	
+	
 	@Test
 	public void testViewAllPostsCase1() throws Exception 
 	{
@@ -98,6 +98,18 @@ public class VisitorControllerTest {
 				.andExpect(view().name("No Records Found"));
 	}
 
+	@Test
+	public void testSavePostsTestCase2() throws Exception 
+	{
+		Gson gson = new Gson();
+		when(postService.savePost(MasterData.getPostDetails())).thenReturn(true);
+		this.mockMvc
+				.perform(post("/addPost").content(gson.toJson(MasterData.getPostDetails()))
+						.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andExpect(view().name("record not saved"));
+
+	}
+	
 	//-------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testSaveComments() throws Exception 
