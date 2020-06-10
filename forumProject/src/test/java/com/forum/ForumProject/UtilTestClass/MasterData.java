@@ -18,9 +18,9 @@ public class MasterData
 		Posts post = new Posts();
 		
 		post.setPostId(post.getPostId());
-		post.setTitle("Technology");
-		post.setTags("Tag1");
-		post.setPostDescription("Post Description : Technology is useful for better human lifes...");
+		post.setTitle("Spring Technology");
+		post.setTags("Java");
+		post.setPostDescription("UseD in IT Sector");
 		
 		return post;
 	}
@@ -29,8 +29,8 @@ public class MasterData
 		Comments comments = new Comments();
 		
 		comments.setCommentId(comments.getCommentId());
-		comments.setTags("Tag @ Comments");
-		comments.setVisitorComment("Need to explore IT world to better understand Computers");
+		comments.setTags("BBB");
+		comments.setVisitorComment("AAA");
 		
 		return comments;
 	}
@@ -40,7 +40,7 @@ public class MasterData
 		DiscussionTitles discuss = new DiscussionTitles();
 		
 		discuss.setTitleId(discuss.getTitleId());
-		discuss.setDiscussionTitle("Discussion Title 1");
+		discuss.setDiscussionTitle("Java Technology");
 		
 		return discuss;
 	}

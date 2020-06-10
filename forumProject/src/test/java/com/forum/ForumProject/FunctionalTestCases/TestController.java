@@ -6,18 +6,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -31,8 +27,6 @@ import com.forum.forumProject.service.DiscussionService;
 import com.forum.forumProject.service.PostService;
 import com.google.gson.Gson;
 
-@SuppressWarnings("deprecation")
-@RunWith(MockitoJUnitRunner.class)
 public class TestController {
 
 	@Mock
@@ -56,10 +50,9 @@ public class TestController {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(visitorController).build();
 	}
 
-	@Before
-	public void init() {
-		MockitoAnnotations.initMocks(this);
-	}
+	/*
+	 * @Before public void init() { MockitoAnnotations.initMocks(this); }
+	 */
 	//-------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testLoadingPageUrl() throws Exception {

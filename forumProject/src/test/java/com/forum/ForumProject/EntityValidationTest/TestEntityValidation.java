@@ -18,7 +18,7 @@ import com.forum.forumProject.entity.Comments;
 import com.forum.forumProject.entity.DiscussionTitles;
 import com.forum.forumProject.entity.Posts;
 
-public class EntityValidationTest {
+public class TestEntityValidation {
 
     private Validator validator;
 

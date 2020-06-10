@@ -1,4 +1,6 @@
-testViewAllUsers=false
-testGetUser=false
-testDeleteUserById=false
-testSaveUsers=false
+
+testViewAllPosts=true
+testViewAllDiscussions=true
+testViewAllComments=true
+testSaveComments=true
+testSavePosts=true

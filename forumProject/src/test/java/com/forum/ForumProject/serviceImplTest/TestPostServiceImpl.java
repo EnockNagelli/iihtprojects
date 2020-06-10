@@ -22,7 +22,7 @@ import com.forum.forumProject.service.PostServiceImpl;
 
 @SuppressWarnings("deprecation")
 @RunWith(MockitoJUnitRunner.class)
-public class PostServiceImplTest {
+public class TestPostServiceImpl {
 	
 	@Mock
 	private PostDao postDAO;
@@ -67,8 +67,7 @@ public class PostServiceImplTest {
 	@Test
 	public void testSavePostsImplTest() throws Exception 
 	{
-		postServiceImpl.savePost(MasterData.getPostDetails());
-		//when(postServiceImpl.savePost(MasterData.getPostDetails())).thenReturn(true);
+		when(postServiceImpl.savePost(MasterData.getPostDetails())).thenReturn(true);
 		assertEquals(Boolean.TRUE, true);
 	}
 }

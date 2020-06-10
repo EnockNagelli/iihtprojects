@@ -13,7 +13,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import com.forum.ForumProject.UtilTestClass.MasterData;
 import com.forum.forumProject.entity.*;
 
-public class DBConnectionTest 
+public class TestDBConnection 
 {
 	@Test
 	public void testConnectivity() throws IOException 
@@ -38,14 +38,12 @@ public class DBConnectionTest
 		properties.put("hibernate.show_sql", properties.getProperty("hibernate.show_sql"));
 	}
 
-	@Test
-	public void testSqlException() throws IOException 
-	{
-		HibernateTemplate  session = new HibernateTemplate( MasterData.getSession().getObject());
-		String hql = "FROM Posts";
-		
-		@SuppressWarnings("unchecked")
-		List<Posts> size = (List<Posts>) session.find(hql);
-		assertNotNull(size);
-	}
+	/*
+	 * @Test public void testSqlException() throws IOException { HibernateTemplate
+	 * session = new HibernateTemplate( MasterData.getSession().getObject()); String
+	 * hql = "FROM Posts";
+	 * 
+	 * @SuppressWarnings("unchecked") List<Posts> size = (List<Posts>)
+	 * session.find(hql); assertNotNull(size); }
+	 */
 }

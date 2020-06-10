@@ -18,13 +18,11 @@ import com.forum.forumProject.service.CommentServiceImpl;
 
 @SuppressWarnings("deprecation")
 @RunWith(MockitoJUnitRunner.class)
-public class CommentServiceImplTest 
+public class TestCommentServiceImpl 
 {
 	@InjectMocks
 	private CommentServiceImpl commentServiceImpl;
 	
-	//private MockMvc mockMvc;
-
 	@Test
 	public void testCommentServiceImplTest() throws Exception 
 	{
@@ -69,8 +67,7 @@ public class CommentServiceImplTest
 	@Test
 	public void testSaveCommentsImplTest() throws Exception 
 	{
-		commentServiceImpl.saveComment(MasterData.getCommentDetails());
-		//when(commentServiceImpl.saveComment(MasterData.getCommentDetails())).thenReturn(true);
+		when(commentServiceImpl.saveComment(MasterData.getCommentDetails())).thenReturn(true);
 		assertEquals(Boolean.TRUE, true);
 	}	
 }
