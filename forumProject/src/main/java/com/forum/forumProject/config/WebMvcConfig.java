@@ -31,17 +31,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter
 	}
 
 	//------------------------------------------------------------------------------------------------------------------------
-	@Override
-	public Validator getValidator() {
-		LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
-		validator.setValidationMessageSource(messageSource());
-		return validator;
-	}
-
-	@Bean
-	public MessageSource messageSource() {
-		ResourceBundleMessageSource source = new ResourceBundleMessageSource();
-		source.setBasename("messages");
-		return source;
-	}
+	/*
+	 * @Override public Validator getValidator() { LocalValidatorFactoryBean
+	 * validator = new LocalValidatorFactoryBean();
+	 * validator.setValidationMessageSource(messageSource()); return validator; }
+	 * 
+	 * @Bean public MessageSource messageSource() { ResourceBundleMessageSource
+	 * source = new ResourceBundleMessageSource(); source.setBasename("messages");
+	 * return source; }
+	 */
 }
