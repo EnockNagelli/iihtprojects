@@ -67,7 +67,7 @@ public class MasterData
 		dataSource.setPassword(properties.getProperty("database.password"));
 		
 		lsfb.setDataSource(dataSource);
-		lsfb.setPackagesToScan("com.forum.ForumApp.entity");
+		lsfb.setPackagesToScan("com.forum.ForumProject.entity");
 		
 		properties.put("hibernate.dialect", properties.getProperty("hibernate.dialect"));
 		properties.put("hibernate.hbm2ddl.auto", properties.getProperty("hibernate.hbm2ddl.auto"));

@@ -8,10 +8,10 @@ import java.util.Properties;
 
 import org.junit.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 
 import com.forum.ForumProject.UtilTestClass.MasterData;
-import com.forum.forumProject.entity.*;
+import com.forum.forumProject.entity.Posts;
 
 public class TestDBConnection 
 {
@@ -19,7 +19,6 @@ public class TestDBConnection
 	public void testConnectivity() throws IOException 
 	{
 		Properties properties = MasterData.getProperties();
-		//BasicDataSource dataSource = new BasicDataSource();
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
 		dataSource.setDriverClassName(properties.getProperty("database.driver"));
@@ -38,12 +37,14 @@ public class TestDBConnection
 		properties.put("hibernate.show_sql", properties.getProperty("hibernate.show_sql"));
 	}
 
-	/*
-	 * @Test public void testSqlException() throws IOException { HibernateTemplate
-	 * session = new HibernateTemplate( MasterData.getSession().getObject()); String
-	 * hql = "FROM Posts";
-	 * 
-	 * @SuppressWarnings("unchecked") List<Posts> size = (List<Posts>)
-	 * session.find(hql); assertNotNull(size); }
-	 */
+	
+	@Test public void testSqlException() throws IOException 
+	{ 		
+		HibernateTemplate session = new HibernateTemplate(MasterData.getSession().getObject()); 
+		String hql = "FROM Posts";
+	  
+		@SuppressWarnings("unchecked") 
+		List<Posts> size = (List<Posts>) session.find(hql); 
+		assertNotNull(size); 
+	}
 }
