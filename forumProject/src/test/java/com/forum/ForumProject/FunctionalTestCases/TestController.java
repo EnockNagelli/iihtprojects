@@ -24,7 +24,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.forum.ForumProject.UtilTestClass.MasterData;
 import com.forum.forumProject.controller.VisitorController;
-import com.forum.forumProject.entity.Comments;
 import com.forum.forumProject.entity.DiscussionTitles;
 import com.forum.forumProject.entity.Posts;
 import com.forum.forumProject.service.CommentService;
@@ -52,16 +51,15 @@ public class TestController {
 
 	//-------------------------------------------------------------------------------------------------------------------
 	@Before
-	public void init() {
-		MockitoAnnotations.initMocks(this);
-	}
-
-	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 		this.mockMvc = MockMvcBuilders.standaloneSetup(visitorController).build();
 	}
 
+	@Before
+	public void init() {
+		MockitoAnnotations.initMocks(this);
+	}
 	//-------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testLoadingPageUrl() throws Exception {
