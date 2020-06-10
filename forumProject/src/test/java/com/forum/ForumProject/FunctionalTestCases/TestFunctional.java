@@ -16,9 +16,13 @@ import org.mockito.MockitoAnnotations;
 
 import com.forum.ForumProject.UtilTestClass.MasterData;
 import com.forum.forumProject.dao.CommentsDao;
+import com.forum.forumProject.dao.DiscussionTitleDao;
 import com.forum.forumProject.dao.PostDao;
+import com.forum.forumProject.entity.Comments;
+import com.forum.forumProject.entity.DiscussionTitles;
 import com.forum.forumProject.entity.Posts;
 import com.forum.forumProject.service.CommentServiceImpl;
+import com.forum.forumProject.service.DiscussionServiceImpl;
 import com.forum.forumProject.service.PostServiceImpl;
 
 public class TestFunctional 
@@ -40,6 +44,8 @@ public class TestFunctional
 	private PostDao postDao;
 	@Mock
 	private CommentsDao commentsDao;
+	@Mock
+	private DiscussionTitleDao discussionDao;
 
 	@Mock
 	private Posts posts;
@@ -47,7 +53,9 @@ public class TestFunctional
 	@InjectMocks
 	private PostServiceImpl postServiceImpl;
 	@InjectMocks
-	private CommentServiceImpl adminServiceImpl;
+	private CommentServiceImpl commentServiceImpl;
+	@InjectMocks
+	private DiscussionServiceImpl discussionServiceImpl;
 	
 	@Before
 	public void init() {
@@ -55,11 +63,27 @@ public class TestFunctional
 	}
 	
 	@Test
-	public void testSavePosts() throws Exception {
-		Boolean value = postServiceImpl.savePost(MasterData.getPostDetails());
+	public void testSavePosts() throws Exception 
+	{
+		boolean value = postServiceImpl.savePost(MasterData.getPostDetails());
 		File file = new File("output_revised.txt");
-	    FileUtils.write(file, "\ntestSaveUsers="+(value?true:false), true); 
+	    FileUtils.write(file, "\ntestSavePosts="+(value ? true : false), true); 
 	}
+
+	@Test
+	public void testSaveComments() throws Exception 
+	{
+		boolean value = commentServiceImpl.saveComment(MasterData.getCommentDetails());
+		File file = new File("output_revised.txt");
+	    FileUtils.write(file, "\ntestSaveComments="+(value ? true : false), true); 
+	}
+	
+	/*
+	 * @Test public void testSaveDiscussions() throws Exception { boolean value =
+	 * discussionServiceImpl.saveDiscussion(MasterData.getCommentDetails()); File
+	 * file = new File("output_revised.txt"); FileUtils.write(file,
+	 * "\ntestSaveDiscussions="+(value ? true : false), true); }
+	 */
 
 	/*
 	 * @Test public void testGetPost() throws Exception { Posts posts = new Posts();
@@ -70,7 +94,7 @@ public class TestFunctional
 	 */
 
 	@Test
-	public void testViewAllUsers() throws Exception 
+	public void testViewAllPosts() throws Exception 
 	{
 		List<Posts> list = new ArrayList<Posts>();
 		list.add(new Posts());
@@ -79,7 +103,33 @@ public class TestFunctional
 	    when(postDao.getAllPosts()).thenReturn((List<Posts>) list);
 		List<Posts> postFromdb = postServiceImpl.getAllPosts();
 		File file = new File("output_revised.txt");
-		FileUtils.write(file, "testViewAllPosts="+(postFromdb==list ? true : false), true); 
+		FileUtils.write(file, "\ntestViewAllPosts="+(postFromdb==list ? true : false), true); 
+	}
+
+	@Test
+	public void testViewAllComments() throws Exception 
+	{
+		List<Comments> list = new ArrayList<Comments>();
+		list.add(new Comments());
+		list.add(new Comments());
+	    
+	    when(commentsDao.getAllComments()).thenReturn((List<Comments>) list);
+		List<Comments> commentFromdb = commentServiceImpl.getAllComments();
+		File file = new File("output_revised.txt");
+		FileUtils.write(file, "\ntestViewAllComments="+(commentFromdb==list ? true : false), true); 
+	}
+	
+	@Test
+	public void testViewAllDiscussions() throws Exception 
+	{
+		List<DiscussionTitles> list = new ArrayList<DiscussionTitles>();
+		list.add(new DiscussionTitles());
+		list.add(new DiscussionTitles());
+	    
+	    when(discussionDao.getAllDiscussionTitles()).thenReturn((List<DiscussionTitles>) list);
+		List<DiscussionTitles> discussionFromdb = discussionServiceImpl.getAllDiscussions();
+		File file = new File("output_revised.txt");
+		FileUtils.write(file, "\ntestViewAllDiscussions="+(discussionFromdb==list ? true : false), true); 
 	}
 	
 	/*

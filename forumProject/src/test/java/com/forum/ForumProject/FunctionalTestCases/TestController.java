@@ -75,16 +75,12 @@ public class TestController {
 	@Test
 	public void testSavePosts() throws Exception 
 	{
-		boolean value = postService.savePost(MasterData.getPostDetails());
-		File file = new File("output_revised.txt");
-	    FileUtils.write(file, "\ntestSavePosts="+(value ? true : false), true); 
-		
-		//Gson gson = new Gson();
-		//when(postService.savePost(MasterData.getPostDetails())).thenReturn(false);
-		//this.mockMvc
-		//		.perform(post("/savePost").content(gson.toJson(MasterData.getPostDetails()))
-		//				.contentType(MediaType.APPLICATION_JSON))
-		//		.andExpect(status().isOk()).andExpect(view().name("record not saved"));
+		Gson gson = new Gson();
+		when(postService.savePost(MasterData.getPostDetails())).thenReturn(false);
+		this.mockMvc
+				.perform(post("/savePost").content(gson.toJson(MasterData.getPostDetails()))
+						.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andExpect(view().name("record not saved"));
 	}
 
 	@Test

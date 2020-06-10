@@ -28,14 +28,12 @@ public class AppConfig
 	private Environment env;
 	
 	@Bean
-	public HibernateTemplate hibernateTemplate() 
-	{
+	public HibernateTemplate hibernateTemplate() {
 		return new HibernateTemplate(sessionFactory());
 	}
 
 	@Bean
-	public SessionFactory sessionFactory() 
-	{
+	public SessionFactory sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 	
 		sessionFactory.setDataSource(getDataSource());
@@ -51,8 +49,7 @@ public class AppConfig
 	}
 
 	@Bean
-	public DataSource getDataSource() 
-	{
+	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		
 		dataSource.setDriverClassName(env.getProperty("database.driver"));
@@ -65,15 +62,13 @@ public class AppConfig
 	
 	@Bean
     @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory s) 
-	{
+    public HibernateTransactionManager transactionManager(SessionFactory s)	{
        HibernateTransactionManager txManager = new HibernateTransactionManager();
        txManager.setSessionFactory(s);
        return txManager;
     }	
 	
-	private Properties hibernateProperties() 
-	{
+	private Properties hibernateProperties() {
 		Properties properties = new Properties();
 	
 		properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
