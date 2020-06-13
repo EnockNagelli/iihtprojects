@@ -43,16 +43,8 @@ public class TestEntityValidation {
     @Before
     public void setUp() throws IOException
     {
-    	boolean value = false;
-        
     	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
-        
-        if(validator != null)
-        	value = true;
-
-	    File file = new File("entity_output_revised.txt");
-	    FileUtils.write(file, "setUp="+(value ? true : false), true); 
     }
 
     //----------------------------------------------------------------------------------------------

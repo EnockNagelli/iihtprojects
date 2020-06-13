@@ -36,6 +36,12 @@
 		    <artifactId>hibernate-core</artifactId>
 		    <version>4.3.5.Final</version>
 		</dependency>
+
+		<dependency>
+		  <groupId>org.hibernate</groupId>
+		  <artifactId>hibernate-validator-annotation-processor</artifactId>
+		  <version>4.1.0.Final</version>
+		</dependency>
 		
 		<!-- Spring core & mvc -->
 		<dependency>
@@ -141,7 +147,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		  		
+		
+		<dependency>
+	        <groupId>org.slf4j</groupId>
+	        <artifactId>slf4j-log4j12</artifactId>
+	        <version>1.5.2</version>
+    	</dependency>
+    	
 	</dependencies>
 
 	<repositories>
