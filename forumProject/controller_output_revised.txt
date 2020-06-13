@@ -1,0 +1,12 @@
+
+testSaveCommentsCase=true
+testViewAllDiscussionsCase=true
+testViewAllPosts=true
+testAddPost=true
+testViewAllDiscussions=true
+testSaveComments=true
+testSavePosts=true
+testViewAllPostsCase=true
+testLoadingPageUrl=true
+testSavePostsCase=true
+testAddComments=true

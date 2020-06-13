@@ -26,20 +26,7 @@ import com.forum.forumProject.service.DiscussionServiceImpl;
 import com.forum.forumProject.service.PostServiceImpl;
 
 public class TestFunctional 
-{
-	static 
-	{
-		File file = new File("output_revised.txt");
-		if (file.exists()) {
-			try {
-				FileUtils.forceDelete(new File("output_revised.txt"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				// e.printStackTrace();
-			}
-		}
-	}
-	
+{	
 	@Mock
 	private PostDao postDao;
 	@Mock
@@ -57,11 +44,27 @@ public class TestFunctional
 	@InjectMocks
 	private DiscussionServiceImpl discussionServiceImpl;
 	
+	//--------------------------------------------------------------------------------------------------------------------------------
+	static 
+	{
+		File file = new File("output_revised.txt");
+		if (file.exists()) {
+			try {
+				FileUtils.forceDelete(new File("output_revised.txt"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				// e.printStackTrace();
+			}
+		}
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------------
 	@Before
 	public void init() {
 		MockitoAnnotations.initMocks(this);
 	}
 	
+	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testSavePosts() throws Exception 
 	{
@@ -70,6 +73,7 @@ public class TestFunctional
 	    FileUtils.write(file, "\ntestSavePosts="+(value ? true : false), true); 
 	}
 
+	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testSaveComments() throws Exception 
 	{
@@ -93,6 +97,7 @@ public class TestFunctional
 	 * "\ntestGetPost="+(userId==0?true:false), true); }
 	 */
 
+	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testViewAllPosts() throws Exception 
 	{
@@ -106,6 +111,7 @@ public class TestFunctional
 		FileUtils.write(file, "\ntestViewAllPosts="+(postFromdb==list ? true : false), true); 
 	}
 
+	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testViewAllComments() throws Exception 
 	{
@@ -119,6 +125,7 @@ public class TestFunctional
 		FileUtils.write(file, "\ntestViewAllComments="+(commentFromdb==list ? true : false), true); 
 	}
 	
+	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testViewAllDiscussions() throws Exception 
 	{

@@ -31,13 +31,11 @@ public class Comments implements Serializable
 
 	public Comments() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getCommentId() {
 		return commentId;
 	}
-
 	public void setCommentId(int commentId) {
 		this.commentId = commentId;
 	}
@@ -45,7 +43,6 @@ public class Comments implements Serializable
 	public String getTags() {
 		return tags;
 	}
-
 	public void setTags(String tags) {
 		this.tags = tags;
 	}
@@ -53,12 +50,7 @@ public class Comments implements Serializable
 	public String getVisitorComment() {
 		return visitorComment;
 	}
-
 	public void setVisitorComment(String visitorComment) {
 		this.visitorComment = visitorComment;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 }

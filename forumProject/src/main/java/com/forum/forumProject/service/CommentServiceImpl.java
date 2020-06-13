@@ -11,13 +11,17 @@ import com.forum.forumProject.entity.Comments;
 
 @Service
 @Transactional
-public class CommentServiceImpl implements CommentService {
+public class CommentServiceImpl implements CommentService 
+{
+	public CommentServiceImpl() {
+		super();
+	}
 
 	@Autowired
 	private CommentsDao commentsDao;
 
 	@Override
-	public Boolean saveComment(Comments comments) {
+	public boolean saveComment(Comments comments) {
 		commentsDao.saveComment(comments);
 		return true;
 	}

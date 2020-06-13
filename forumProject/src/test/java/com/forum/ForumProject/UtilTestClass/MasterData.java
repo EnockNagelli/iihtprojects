@@ -20,7 +20,7 @@ public class MasterData
 		post.setPostId(post.getPostId());
 		post.setTitle("Spring Technology");
 		post.setTags("Java");
-		post.setPostDescription("UseD in IT Sector");
+		post.setPostDescription("Used in IT Sector");
 		
 		return post;
 	}
@@ -29,8 +29,8 @@ public class MasterData
 		Comments comments = new Comments();
 		
 		comments.setCommentId(comments.getCommentId());
-		comments.setTags("BBB");
-		comments.setVisitorComment("AAA");
+		comments.setTags("I Like it");
+		comments.setVisitorComment("Design Patterns are important in Java Technology");
 		
 		return comments;
 	}

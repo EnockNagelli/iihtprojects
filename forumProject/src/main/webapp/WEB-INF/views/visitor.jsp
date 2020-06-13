@@ -32,8 +32,8 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-3">
-					<a href="addPost" 		 class="btn btn-info btn-md btn-block" role="button"><b>Add Post</b></a><br>
-					<a href="viewPosts" 	 class="btn btn-info btn-md btn-block" role="button"><b>View Posts</b></a><br>
+					<a href="addNewPost"     class="btn btn-info btn-md btn-block" role="button"><b>Add Post</b></a><br>
+					<a href="viewAllPosts" 	 class="btn btn-info btn-md btn-block" role="button"><b>View Posts</b></a><br>
 					<a href="addComments" 	 class="btn btn-info btn-md btn-block" role="button"><b>Add Comments</b></a><br>
 					<a href="viewDiscussion" class="btn btn-info btn-md btn-block" role="button"><b>View Discussion</b></a><br><br>
 				</div>

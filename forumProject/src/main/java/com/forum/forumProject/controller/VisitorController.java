@@ -36,12 +36,12 @@ public class VisitorController
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView visitorPage(HttpServletResponse response) throws IOException
 	{
-		System.out.println("Server Started. Inside the controller");
+		System.out.println("Server Started. Inside the controller. Serving upon landing page...");
 		return new ModelAndView("visitor", "posts", new Posts());
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------
-	@RequestMapping(value = "/addPost", method = RequestMethod.GET)
+	@RequestMapping(value = "/addNewPost", method = RequestMethod.GET)
 	public ModelAndView addPost() 
 	{
 		return new ModelAndView("addPost");
@@ -64,7 +64,7 @@ public class VisitorController
 		return "visitor";
 	}
 
-	@RequestMapping(value = "/viewPosts", method = RequestMethod.GET)
+	@RequestMapping(value = "/viewAllPosts", method = RequestMethod.GET)
 	public ModelAndView getAllPosts() 
 	{
 		ModelAndView md = null;
@@ -76,7 +76,10 @@ public class VisitorController
 				md = new ModelAndView("viewPosts", "plist", postList);
 			}
 			else
+			{
+				md = new ModelAndView("visitor");
 				throw new RuntimeException("No Records Found");
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -102,7 +105,7 @@ public class VisitorController
 		comments.setVisitorComment(visitorComment);
 		
 		commentService.saveComment(comments);
-		 
+		
 		return "visitor";
 	}
 	
@@ -119,7 +122,10 @@ public class VisitorController
 				md = new ModelAndView("viewDiscussionList", "discussionlist", discussionList);
 			}
 			else
+			{
+				md = new ModelAndView("visitor");
 				throw new RuntimeException("No Records Found");
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
