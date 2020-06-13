@@ -15,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.forum.ForumProject.UtilTestClass.MasterData;
-import com.forum.forumProject.dao.PostDao;
 import com.forum.forumProject.dao.PostDaoImpl;
 import com.forum.forumProject.entity.Posts;
 import com.forum.forumProject.service.PostService;
