@@ -1,0 +1,4 @@
+
+testSavePostsImplTest=true
+testViewAllCommentsImplTest1=false
+testViewAllPostsImplTest=false
