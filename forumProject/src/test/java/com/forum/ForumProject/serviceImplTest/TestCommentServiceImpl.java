@@ -16,18 +16,14 @@ import org.mockito.MockitoAnnotations;
 
 import com.forum.ForumProject.UtilTestClass.MasterData;
 import com.forum.forumProject.dao.CommentsDao;
-import com.forum.forumProject.dao.CommentsDaoImpl;
 import com.forum.forumProject.entity.Comments;
 import com.forum.forumProject.service.CommentService;
 import com.forum.forumProject.service.CommentServiceImpl;
 
 public class TestCommentServiceImpl 
-{	
+{
 	@Mock
 	private CommentsDao commentsDao;
-
-	@Mock
-	private CommentsDaoImpl commentsDaoImpl;
 
 	@Mock
 	private CommentService commentService;
@@ -97,12 +93,11 @@ public class TestCommentServiceImpl
 	{
 		List<Comments> list = new ArrayList<Comments>();
 		  
-		//when(commentServiceImpl.getAllComments()).thenReturn((List<Comments>) list);
-		//List<Comments> commentFromdb = commentsDaoImpl.getAllComments();
+		when(commentServiceImpl.getAllComments()).thenReturn((List<Comments>) list);
+		List<Comments> commentFromdb = commentsDao.getAllComments();
 		  
-		when(commentsDaoImpl.getAllComments()).thenReturn((List<Comments>) list);
-		  
-		List<Comments> commentFromdb = commentServiceImpl.getAllComments();
+		//when(commentsDaoImpl.getAllComments()).thenReturn((List<Comments>) list);
+		//List<Comments> commentFromdb = commentServiceImpl.getAllComments();
 
 		//System.out.println(commentFromdb);
 		
@@ -118,7 +113,7 @@ public class TestCommentServiceImpl
 	public void testViewAllCommentsImplTest2() throws Exception 
 	{ 
 		//when(new CommentServiceImpl().getAllComments()).thenReturn(null);
-		when(commentsDaoImpl.getAllComments()).thenReturn(null);
+		when(commentsDao.getAllComments()).thenReturn(null);
 		  
 		List<Comments> commentFromdb = commentServiceImpl.getAllComments();
 
@@ -136,7 +131,7 @@ public class TestCommentServiceImpl
 	{
 		when(commentService.saveComment(MasterData.getCommentDetails())).thenReturn(true); 
 		
-		List<Comments> commentFromdb = commentsDaoImpl.getAllComments();
+		List<Comments> commentFromdb = commentsDao.getAllComments();
 		
 		File file = new File("comments_output_revised.txt");
 		FileUtils.write(file, "\ntestSaveCommentsImplTest="+(commentFromdb != null ? true : false), true);

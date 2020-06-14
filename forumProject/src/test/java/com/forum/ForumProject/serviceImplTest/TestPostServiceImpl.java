@@ -15,7 +15,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.forum.ForumProject.UtilTestClass.MasterData;
-import com.forum.forumProject.dao.PostDaoImpl;
+import com.forum.forumProject.dao.PostDao;
 import com.forum.forumProject.entity.Posts;
 import com.forum.forumProject.service.PostService;
 import com.forum.forumProject.service.PostServiceImpl;
@@ -26,7 +26,7 @@ public class TestPostServiceImpl
 	private PostService postService;
 
 	@Mock
-	private PostDaoImpl postDaoImpl;
+	private PostDao postDao;
 
 	@InjectMocks
 	private PostServiceImpl postServiceImpl;
@@ -58,7 +58,7 @@ public class TestPostServiceImpl
 	{
 		when(postService.savePost(MasterData.getPostDetails())).thenReturn(true);
 		
-		List<Posts> postFromdb = postDaoImpl.getAllPosts();
+		List<Posts> postFromdb = postDao.getAllPosts();
 		
 		File file = new File("posts_output_revised.txt");
 		FileUtils.write(file, "\ntestSavePostsImplTest="+(postFromdb != null ? true : false), true);
@@ -66,6 +66,20 @@ public class TestPostServiceImpl
 		//assertEquals(Boolean.TRUE, true);
 	}
 
+	//--------------------------------------------------------------------------------------------------------------------------------
+	@Test
+	public void testPostServiceImplTest() throws Exception 
+	{
+		//postServiceImpl.savePost(MasterData.getPostDetails());
+		//assertEquals(Boolean.TRUE, true);
+
+		boolean value = postServiceImpl.savePost(MasterData.getPostDetails());
+		
+		File file = new File("posts_output_revised.txt");
+	    FileUtils.write(file, "\ntestPostServiceImplTest="+(value ? true : false), true);
+	}
+
+	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testViewAllPostsImplTest() throws Exception 
 	{	
@@ -73,9 +87,9 @@ public class TestPostServiceImpl
 		list.add(new Posts());
 		list.add(new Posts());
 
-		when(postService.getAllPosts()).thenReturn((List<Posts>) list);
+		when(postServiceImpl.getAllPosts()).thenReturn((List<Posts>) list);
 		
-		List<Posts> postFromdb = postDaoImpl.getAllPosts();
+		List<Posts> postFromdb = postDao.getAllPosts();
 
 		File file = new File("posts_output_revised.txt");
 		FileUtils.write(file, "\ntestViewAllPostsImplTest="+(postFromdb==list ? true : false), true);
@@ -89,12 +103,12 @@ public class TestPostServiceImpl
 	{ 
 		List<Posts> list = new ArrayList<Posts>();
 	  
-		when(postService.getAllPosts()).thenReturn((List<Posts>) list);
+		when(postServiceImpl.getAllPosts()).thenReturn((List<Posts>) list);
 	  
-		List<Posts> postsFromdb = postDaoImpl.getAllPosts();
+		List<Posts> postsFromdb = postDao.getAllPosts();
 	  
 		File file = new File("posts_output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllCommentsImplTest1="+(postsFromdb==list ? true : false), true); 
+		FileUtils.write(file, "\ntestViewAllPostsImplTest1="+(postsFromdb==list ? true : false), true); 
 
 		//assertEquals(Collections.EMPTY_LIST, list); 
 	}
@@ -102,12 +116,12 @@ public class TestPostServiceImpl
 	@Test 
 	public void testViewAllPostsImplTest2() throws Exception 
 	{ 
-		when(postService.getAllPosts()).thenReturn(null);
+		when(postServiceImpl.getAllPosts()).thenReturn(null);
 	  
-		List<Posts> postsFromdb = postDaoImpl.getAllPosts();
+		List<Posts> postsFromdb = postDao.getAllPosts();
 	  
-		File file = new File("comments_output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllCommentsImplTest2="+(postsFromdb==null ? true : false), true);
+		File file = new File("posts_output_revised.txt");
+		FileUtils.write(file, "\ntestViewAllPostsImplTest2="+(postsFromdb==null ? true : false), true);
 
 		//assertEquals(null, list); 
 	} 

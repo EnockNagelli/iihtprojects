@@ -2,10 +2,5 @@
 testSaveCommentsImplTest=true
 testCommentServiceImplTest=true
 testViewAllCommentsImplTest=true
-testViewAllCommentsImplTest1=false
-testViewAllCommentsImplTest2=false
-testViewAllCommentsImplTest2=false
+testViewAllCommentsImplTest1=true
 testViewAllCommentsImplTest2=true
-testViewAllCommentsImplTest2=true
-testViewAllCommentsImplTest2=true
-testViewAllCommentsImplTest2=false

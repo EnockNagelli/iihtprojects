@@ -1,4 +1,6 @@
 
 testSavePostsImplTest=true
-testViewAllCommentsImplTest1=false
-testViewAllPostsImplTest=false
+testViewAllPostsImplTest1=true
+testViewAllPostsImplTest2=true
+testPostServiceImplTest=true
+testViewAllPostsImplTest=true
