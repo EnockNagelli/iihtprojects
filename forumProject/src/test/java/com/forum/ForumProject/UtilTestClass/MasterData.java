@@ -8,7 +8,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 
 import com.forum.forumProject.entity.Comments;
-import com.forum.forumProject.entity.DiscussionTitles;
 import com.forum.forumProject.entity.Posts;
 
 public class MasterData 
@@ -35,16 +34,6 @@ public class MasterData
 		return comments;
 	}
 	
-	public static DiscussionTitles getDiscussionDetails() 
-	{
-		DiscussionTitles discuss = new DiscussionTitles();
-		
-		discuss.setTitleId(discuss.getTitleId());
-		discuss.setDiscussionTitle("Java Technology");
-		
-		return discuss;
-	}
-
 	public static Properties getProperties() throws IOException 
 	{
 		FileReader reader = new FileReader("src\\main\\resources\\database.properties");

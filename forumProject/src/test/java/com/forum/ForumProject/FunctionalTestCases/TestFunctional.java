@@ -16,13 +16,10 @@ import org.mockito.MockitoAnnotations;
 
 import com.forum.ForumProject.UtilTestClass.MasterData;
 import com.forum.forumProject.dao.CommentsDao;
-import com.forum.forumProject.dao.DiscussionTitleDao;
 import com.forum.forumProject.dao.PostDao;
 import com.forum.forumProject.entity.Comments;
-import com.forum.forumProject.entity.DiscussionTitles;
 import com.forum.forumProject.entity.Posts;
 import com.forum.forumProject.service.CommentServiceImpl;
-import com.forum.forumProject.service.DiscussionServiceImpl;
 import com.forum.forumProject.service.PostServiceImpl;
 
 public class TestFunctional 
@@ -31,8 +28,6 @@ public class TestFunctional
 	private PostDao postDao;
 	@Mock
 	private CommentsDao commentsDao;
-	@Mock
-	private DiscussionTitleDao discussionDao;
 
 	@Mock
 	private Posts posts;
@@ -41,8 +36,6 @@ public class TestFunctional
 	private PostServiceImpl postServiceImpl;
 	@InjectMocks
 	private CommentServiceImpl commentServiceImpl;
-	@InjectMocks
-	private DiscussionServiceImpl discussionServiceImpl;
 	
 	//--------------------------------------------------------------------------------------------------------------------------------
 	static 
@@ -129,12 +122,12 @@ public class TestFunctional
 	@Test
 	public void testViewAllDiscussions() throws Exception 
 	{
-		List<DiscussionTitles> list = new ArrayList<DiscussionTitles>();
-		list.add(new DiscussionTitles());
-		list.add(new DiscussionTitles());
+		List<Posts> list = new ArrayList<Posts>();
+		list.add(new Posts());
+		list.add(new Posts());
 	    
-	    when(discussionDao.getAllDiscussionTitles()).thenReturn((List<DiscussionTitles>) list);
-		List<DiscussionTitles> discussionFromdb = discussionServiceImpl.getAllDiscussions();
+	    when(postDao.getAllPosts()).thenReturn((List<Posts>) list);
+		List<Posts> discussionFromdb = postServiceImpl.getAllPosts();
 		File file = new File("output_revised.txt");
 		FileUtils.write(file, "\ntestViewAllDiscussions="+(discussionFromdb==list ? true : false), true); 
 	}

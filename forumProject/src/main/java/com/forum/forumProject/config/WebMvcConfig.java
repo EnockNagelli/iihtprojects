@@ -26,19 +26,4 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-
-	//------------------------------------------------------------------------------------------------------------------------
-	@Override 
-	public Validator getValidator() 
-	{ 
-		LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
-		validator.setValidationMessageSource(messageSource()); return validator; 
-	}
-	  
-	@Bean 
-	public MessageSource messageSource() 
-	{ 
-		ResourceBundleMessageSource	source = new ResourceBundleMessageSource(); source.setBasename("messages");
-		return source; 
-	} 
 }

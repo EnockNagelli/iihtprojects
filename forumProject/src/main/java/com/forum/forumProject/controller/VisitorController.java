@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.forum.forumProject.entity.Comments;
-import com.forum.forumProject.entity.DiscussionTitles;
 import com.forum.forumProject.entity.Posts;
 import com.forum.forumProject.service.CommentService;
-import com.forum.forumProject.service.DiscussionService;
 import com.forum.forumProject.service.PostService;
 
 @Controller
@@ -29,9 +27,9 @@ public class VisitorController
 	@Autowired 
 	private CommentService commentService;
 	
-	@Autowired
-	private DiscussionService discussionService;
-	
+	/*
+	 * @Autowired private DiscussionService discussionService;
+	 */	
 	//--------------------------------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView visitorPage(HttpServletResponse response) throws IOException
@@ -116,7 +114,7 @@ public class VisitorController
 		ModelAndView md = null;
 		try 
 		{
-			List<DiscussionTitles> discussionList = discussionService.getAllDiscussions();
+			List<Posts> discussionList = postService.getAllPosts();
 			
 			if(!CollectionUtils.isEmpty(discussionList)) {
 				md = new ModelAndView("viewDiscussionList", "discussionlist", discussionList);

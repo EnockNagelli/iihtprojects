@@ -44,10 +44,10 @@
             <c:forEach var="listValue" items="${discussionlist}">
 	            <tr>
 	                <td>
-	                    <c:out value="${listValue.titleId}" /> 
+	                    <c:out value="${listValue.postId}" /> 
 	                </td>
 	                <td>
-	                    <c:out value="${listValue.discussionTitle}" /> 
+	                    <c:out value="${listValue.title}" /> 
 	                </td>
 	            </tr>
             </c:forEach>

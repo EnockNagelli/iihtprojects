@@ -1,8 +1,5 @@
 package com.forum.ForumProject.EntityValidationTest;
 
-//import static org.junit.Assert.assertFalse;
-//import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Set;
@@ -18,7 +15,6 @@ import org.junit.Test;
 
 import com.forum.ForumProject.UtilTestClass.MasterData;
 import com.forum.forumProject.entity.Comments;
-import com.forum.forumProject.entity.DiscussionTitles;
 import com.forum.forumProject.entity.Posts;
 
 public class TestEntityValidation {
@@ -56,8 +52,6 @@ public class TestEntityValidation {
         
         File file = new File("entity_output_revised.txt");
 	    FileUtils.write(file, "\ntestPostSuccess="+(violations.isEmpty() ? true : false), true);
-
-        //assertTrue(violations.isEmpty());
     }
     
     @Test
@@ -69,8 +63,6 @@ public class TestEntityValidation {
         
         File file = new File("entity_output_revised.txt");
 	    FileUtils.write(file, "\ntestPostFailed="+(violations.isEmpty() ? false : true), true);
-        
-        //assertFalse(violations.isEmpty());
     }
 
     //----------------------------------------------------------------------------------------------
@@ -82,8 +74,6 @@ public class TestEntityValidation {
 
         File file = new File("entity_output_revised.txt");
 	    FileUtils.write(file, "\ntestCommentSuccess="+(violations.isEmpty() ? true : false), true);
-        
-        //assertTrue(violations.isEmpty());
     }
     
     @Test
@@ -95,33 +85,5 @@ public class TestEntityValidation {
 
         File file = new File("entity_output_revised.txt");
 	    FileUtils.write(file, "\ntestCommentFailed="+(violations.isEmpty() ? false : true), true);
-
-        //assertFalse(violations.isEmpty());
     }
-
-    //----------------------------------------------------------------------------------------------
-    @Test
-    public void testDiscussionSuccess() throws IOException
-    {
-    	DiscussionTitles discussion = MasterData.getDiscussionDetails();
-        Set<ConstraintViolation<DiscussionTitles>> violations = validator.validate(discussion);
-
-        File file = new File("entity_output_revised.txt");
-	    FileUtils.write(file, "\ntestDiscussionSuccess="+(violations.isEmpty() ? true : false), true);
-
-        //assertTrue(violations.isEmpty());
-    }
-    
-    @Test
-    public void testDiscussionFailed() throws IOException
-    {
-    	DiscussionTitles discussion = MasterData.getDiscussionDetails();
-    	discussion.setDiscussionTitle(null);
-        Set<ConstraintViolation<DiscussionTitles>> violations = validator.validate(discussion);
-        
-        File file = new File("entity_output_revised.txt");
-	    FileUtils.write(file, "\ntestDiscussionFailed="+(violations.isEmpty() ? false : true), true);
-        
-        //assertFalse(violations.isEmpty());
-    }   
 }

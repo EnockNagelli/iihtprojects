@@ -1,7 +1,5 @@
 
 testPostSuccess=false
-testDiscussionSuccess=true
-testDiscussionFailed=false
 testCommentFailed=false
 testPostFailed=true
 testCommentSuccess=true

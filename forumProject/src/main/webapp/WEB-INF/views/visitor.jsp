@@ -3,7 +3,6 @@
 <html lang="en">
     <head>
         <title>Forum Application</title>
-		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -28,7 +27,7 @@
   			</div><br><br> -->
   			
    			<div style="height: 100px;">
-				<div class="bg-danger h-50 d-inline-block text-white text-center form-rounded" style="width: 1120px;"><h2><b>Online Forum Application</b><h2></div>
+				<div class="bg-danger h-50 d-inline-block text-white text-center form-rounded" style="width: 1120px;"><h2>Online Forum Application</h2></div>
 			</div>
 			<div class="row">
 				<div class="col-sm-3">
@@ -38,7 +37,10 @@
 					<a href="viewDiscussion" class="btn btn-info btn-md btn-block" role="button"><b>View Discussion</b></a><br><br>
 				</div>
 			</div>
-			<h1><p class="bg-primary text-white text-right">IIHT</p></h1><br>
+			<div>
+				<p class="bg-primary text-white text-right"><h1>IIHT</h1><br>
+			</div>
+			
 		</div>        
         
     </body>

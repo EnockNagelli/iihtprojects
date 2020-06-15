@@ -26,10 +26,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.forum.ForumProject.UtilTestClass.MasterData;
 import com.forum.forumProject.controller.VisitorController;
-import com.forum.forumProject.entity.DiscussionTitles;
 import com.forum.forumProject.entity.Posts;
 import com.forum.forumProject.service.CommentService;
-import com.forum.forumProject.service.DiscussionService;
 import com.forum.forumProject.service.PostService;
 import com.google.gson.Gson;
 
@@ -40,9 +38,6 @@ public class TestController
 
 	@Mock
 	private CommentService commentService;
-
-	@Mock
-	private DiscussionService discussionService;
 
 	@InjectMocks
 	private VisitorController visitorController;
@@ -207,11 +202,11 @@ public class TestController
 	@Test 
 	public void testViewAllDiscussions() throws Exception 
 	{
-		List<DiscussionTitles> discuss = new ArrayList<DiscussionTitles>();
-		discuss.add(new DiscussionTitles());
-		discuss.add(new DiscussionTitles());
+		List<Posts> discuss = new ArrayList<Posts>();
+		discuss.add(new Posts());
+		discuss.add(new Posts());
 		
-		when(discussionService.getAllDiscussions()).thenReturn((List<DiscussionTitles>) discuss);
+		when(postService.getAllPosts()).thenReturn((List<Posts>) discuss);
 		
 		MvcResult result = this.mockMvc.perform(get("/viewDiscussion")).andExpect(status().isOk()).andExpect(view().name("viewDiscussionList")).andReturn();
 
@@ -222,7 +217,7 @@ public class TestController
 	@Test 
 	public void testViewAllDiscussionsCase() throws Exception 
 	{
-		when(discussionService.getAllDiscussions()).thenReturn(null);
+		when(postService.getAllPosts()).thenReturn(null);
 		
 		MvcResult result = this.mockMvc.perform(get("/viewDiscussion")).andExpect(status().isOk()).andExpect(view().name("visitor")).andReturn(); 
 		
