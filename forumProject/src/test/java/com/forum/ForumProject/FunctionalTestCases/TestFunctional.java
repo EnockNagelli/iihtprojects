@@ -75,21 +75,6 @@ public class TestFunctional
 	    FileUtils.write(file, "\ntestSaveComments="+(value ? true : false), true); 
 	}
 	
-	/*
-	 * @Test public void testSaveDiscussions() throws Exception { boolean value =
-	 * discussionServiceImpl.saveDiscussion(MasterData.getCommentDetails()); File
-	 * file = new File("output_revised.txt"); FileUtils.write(file,
-	 * "\ntestSaveDiscussions="+(value ? true : false), true); }
-	 */
-
-	/*
-	 * @Test public void testGetPost() throws Exception { Posts posts = new Posts();
-	 * posts.setPostId(1); int userId = posts.getPostId(); Posts postfromdb =
-	 * postServiceImpl.getPostById(posts.getPostId()); File file = new
-	 * File("output_revised.txt"); FileUtils.write(file,
-	 * "\ntestGetPost="+(userId==0?true:false), true); }
-	 */
-
 	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testViewAllPosts() throws Exception 
@@ -130,12 +115,5 @@ public class TestFunctional
 		List<Posts> discussionFromdb = postServiceImpl.getAllPosts();
 		File file = new File("output_revised.txt");
 		FileUtils.write(file, "\ntestViewAllDiscussions="+(discussionFromdb==list ? true : false), true); 
-	}
-	
-	/*
-	 * @Test public void testDeletePostById() throws Exception { Boolean value =
-	 * postServiceImpl.updatePostById(MasterData.getPostDetails().getPostId(),
-	 * posts); File file = new File("output_revised.txt"); FileUtils.write(file,
-	 * "\ntestDeletePostById="+(value ? true : false), true); }
-	 */
+	}	
 }

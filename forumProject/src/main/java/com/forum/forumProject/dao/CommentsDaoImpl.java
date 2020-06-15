@@ -17,7 +17,7 @@ public class CommentsDaoImpl implements CommentsDao
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Comments> getAllComments() {		
-		String hql = "FROM Comments";				// as g ORDER BY g.commentId";
+		String hql = "FROM Comments";
 		return sessionFactory.getCurrentSession().createQuery(hql).list();
 	}
 

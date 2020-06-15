@@ -132,11 +132,7 @@ public class TestController
 		MvcResult result = this.mockMvc.perform(get("/viewAllPosts")).andExpect(status().isOk()).andExpect(view().name("viewPosts")).andReturn();
 
 		File file = new File("controller_output_revised.txt"); 
-		FileUtils.write(file, "\ntestViewAllPosts="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);		
-		
-		//List<Posts> dataFromdb = postService.getAllPosts();
-		//File file1 = new File("controller_output_revised.txt"); 
-		//FileUtils.write(file1, "\ntestViewAllPosts="+(dataFromdb==posts? true : false), true); 
+		FileUtils.write(file, "\ntestViewAllPosts="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);
 	}
 
 	@Test 
@@ -145,10 +141,6 @@ public class TestController
 		when(postService.getAllPosts()).thenReturn(null);
 		
 		MvcResult result = this.mockMvc.perform(get("/viewAllPosts")).andExpect(status().isOk()).andExpect(view().name("visitor")).andReturn(); 
-	  
-		//System.out.println("----------------------------");
-		//System.out.println("RESULT : "+result.getResponse().getContentAsString());
-		//System.out.println("----------------------------");
 		
 		File file = new File("controller_output_revised.txt"); 
 		FileUtils.write(file, "\ntestViewAllPostsCase="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);

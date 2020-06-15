@@ -37,10 +37,9 @@
 					<a href="viewDiscussion" class="btn btn-info btn-md btn-block" role="button"><b>View Discussion</b></a><br><br>
 				</div>
 			</div>
-			<div>
-				<p class="bg-primary text-white text-right"><h1>IIHT</h1><br>
-			</div>
-			
+   			<div style="height: 100px;">
+				<div class="bg-primary h-50 text-white text-right form-rounded"><h1>IIHT</h1><br></div>
+			</div>	
 		</div>        
         
     </body>

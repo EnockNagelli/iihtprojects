@@ -8,7 +8,5 @@ public interface PostService
 {
 	public Boolean savePost(Posts posts);
 	
-	public List<Posts> getAllPosts();
-	
-	//public List<String> getAllPostTitles();
+	public List<Posts> getAllPosts();	
 }

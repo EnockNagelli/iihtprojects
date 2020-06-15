@@ -47,7 +47,6 @@ public class MasterData
 		LocalSessionFactoryBean lsfb = new LocalSessionFactoryBean();
 		Properties properties = getProperties();
 		
-		//BasicDataSource dataSource = new BasicDataSource();
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		
 		dataSource.setDriverClassName(properties.getProperty("database.driver"));

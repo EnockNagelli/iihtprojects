@@ -1,7 +1,5 @@
 package com.forum.ForumProject.DBConnectivityTestCases;
 
-//import static org.junit.Assert.assertNotNull;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -48,8 +46,6 @@ public class TestDBConnection
 
 	    File file = new File("db_output_revised.txt");
 	    FileUtils.write(file, "testConnectivity="+(value ? true : false), true); 
-
-	    //assertNotNull(dataSource);
 	}
 
 	@Test
@@ -87,7 +83,5 @@ public class TestDBConnection
 		
 		File file = new File("db_output_revised.txt");
 		FileUtils.write(file, "\ntestSqlException="+(value ? true : false), true); 
-
-		//assertNotNull(size);
 	}
 }

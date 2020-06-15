@@ -8,7 +8,5 @@ public interface PostDao
 {
 	public void savePost(Posts posts);
 	
-	public List<Posts> getAllPosts();
-	
-	//public List<String> getPostTitles();
+	public List<Posts> getAllPosts();	
 }

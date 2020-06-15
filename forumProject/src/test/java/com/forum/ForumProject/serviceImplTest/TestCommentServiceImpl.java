@@ -56,9 +56,6 @@ public class TestCommentServiceImpl
 	@Test
 	public void testCommentServiceImplTest() throws Exception 
 	{
-		//commentServiceImpl.saveComment(MasterData.getCommentDetails());
-		//assertEquals(Boolean.TRUE, true);
-
 		boolean value = commentServiceImpl.saveComment(MasterData.getCommentDetails());
 		
 		File file = new File("comments_output_revised.txt");
@@ -73,18 +70,12 @@ public class TestCommentServiceImpl
 		list.add(MasterData.getCommentDetails());
 		list.add(MasterData.getCommentDetails());
 		
-		//when(new CommentServiceImpl().getAllComments()).thenReturn((List<Comments>) list);
 		when(commentServiceImpl.getAllComments()).thenReturn((List<Comments>) list);
 		
-		//List<Comments> commentFromdb = commentServiceImpl.getAllComments();
 		List<Comments> commentFromdb = commentsDao.getAllComments();
 	
-		//System.out.println(commentFromdb);
-
 		File file = new File("comments_output_revised.txt");
 		FileUtils.write(file, "\ntestViewAllCommentsImplTest="+(commentFromdb==list ? true : false), true); 
-		
-		//assertEquals(2, list.size()); 
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -95,16 +86,9 @@ public class TestCommentServiceImpl
 		  
 		when(commentServiceImpl.getAllComments()).thenReturn((List<Comments>) list);
 		List<Comments> commentFromdb = commentsDao.getAllComments();
-		  
-		//when(commentsDaoImpl.getAllComments()).thenReturn((List<Comments>) list);
-		//List<Comments> commentFromdb = commentServiceImpl.getAllComments();
 
-		//System.out.println(commentFromdb);
-		
 		File file = new File("comments_output_revised.txt");
 		FileUtils.write(file, "\ntestViewAllCommentsImplTest1="+(commentFromdb==list ? true : false), true); 
-
-		//assertEquals(Collections.EMPTY_LIST, list); 
 	}
 	 	
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -112,17 +96,12 @@ public class TestCommentServiceImpl
 	@Test 
 	public void testViewAllCommentsImplTest2() throws Exception 
 	{ 
-		//when(new CommentServiceImpl().getAllComments()).thenReturn(null);
 		when(commentsDao.getAllComments()).thenReturn(null);
 		  
 		List<Comments> commentFromdb = commentServiceImpl.getAllComments();
 
-		//System.out.println(commentFromdb);
-
 		File file = new File("comments_output_revised.txt");
 		FileUtils.write(file, "\ntestViewAllCommentsImplTest2="+(commentFromdb==null ? true : false), true);
-		
-		//assertEquals(null, list); 
 	}
 	 	
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -135,7 +114,5 @@ public class TestCommentServiceImpl
 		
 		File file = new File("comments_output_revised.txt");
 		FileUtils.write(file, "\ntestSaveCommentsImplTest="+(commentFromdb != null ? true : false), true);
-
-		//assertEquals(Boolean.TRUE, true); 
 	}
 }

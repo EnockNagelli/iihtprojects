@@ -26,9 +26,4 @@ public class PostServiceImpl implements PostService
 	public List<Posts> getAllPosts() {
 		return postDao.getAllPosts();
 	}
-
-	//@Override
-	//public List<String> getAllPostTitles() {
-	//	return postDao.getPostTitles();
-	//}	
 }

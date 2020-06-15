@@ -62,17 +62,12 @@ public class TestPostServiceImpl
 		
 		File file = new File("posts_output_revised.txt");
 		FileUtils.write(file, "\ntestSavePostsImplTest="+(postFromdb != null ? true : false), true);
-
-		//assertEquals(Boolean.TRUE, true);
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testPostServiceImplTest() throws Exception 
 	{
-		//postServiceImpl.savePost(MasterData.getPostDetails());
-		//assertEquals(Boolean.TRUE, true);
-
 		boolean value = postServiceImpl.savePost(MasterData.getPostDetails());
 		
 		File file = new File("posts_output_revised.txt");
@@ -93,8 +88,6 @@ public class TestPostServiceImpl
 
 		File file = new File("posts_output_revised.txt");
 		FileUtils.write(file, "\ntestViewAllPostsImplTest="+(postFromdb==list ? true : false), true);
-
-		//assertEquals(2, list.size());
 	}
 	
 	
@@ -109,8 +102,6 @@ public class TestPostServiceImpl
 	  
 		File file = new File("posts_output_revised.txt");
 		FileUtils.write(file, "\ntestViewAllPostsImplTest1="+(postsFromdb==list ? true : false), true); 
-
-		//assertEquals(Collections.EMPTY_LIST, list); 
 	}
 	  
 	@Test 
@@ -122,7 +113,5 @@ public class TestPostServiceImpl
 	  
 		File file = new File("posts_output_revised.txt");
 		FileUtils.write(file, "\ntestViewAllPostsImplTest2="+(postsFromdb==null ? true : false), true);
-
-		//assertEquals(null, list); 
 	} 
 }

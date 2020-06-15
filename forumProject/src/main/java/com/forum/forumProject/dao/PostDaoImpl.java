@@ -17,18 +17,9 @@ public class PostDaoImpl implements PostDao
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Posts> getAllPosts() {		
-		String hql = "FROM Posts";				// as g ORDER BY g.postId";		  		
+		String hql = "FROM Posts";		  		
 		return (List<Posts>) sessionFactory.getCurrentSession().createQuery(hql).list();
 	}
-
-	
-	/*
-	 * @SuppressWarnings("unchecked")
-	 * 
-	 * @Override public List<Posts> getPostTitles() { String hql = "FROM Posts";
-	 * return (List<Posts>)
-	 * sessionFactory.getCurrentSession().createQuery(hql).list(); }
-	 */
 	
 	@Override
 	public void savePost(Posts posts) {
