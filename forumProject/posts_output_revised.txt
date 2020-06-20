@@ -1,6 +1,0 @@
-
-testSavePostsImplTest=true
-testViewAllPostsImplTest1=true
-testViewAllPostsImplTest2=true
-testPostServiceImplTest=true
-testViewAllPostsImplTest=true

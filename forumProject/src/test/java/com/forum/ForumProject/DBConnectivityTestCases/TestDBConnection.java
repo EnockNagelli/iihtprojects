@@ -1,11 +1,13 @@
 package com.forum.ForumProject.DBConnectivityTestCases;
 
-import java.io.File;
+import static com.forum.ForumProject.UtilTestClass.TestUtils.*;
+
+//import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -15,19 +17,14 @@ import com.forum.forumProject.entity.Posts;
 
 public class TestDBConnection 
 {
-	static 
-	{
-		File file = new File("db_output_revised.txt");
-		if (file.exists()) {
-			try {
-				FileUtils.forceDelete(new File("db_output_revised.txt"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				// e.printStackTrace();
-			}
-		}
-	}
-	
+    //----------------------------------------------------------------------------------------------
+	/*
+	 * static { File file = new File("db_output_revised.txt"); if (file.exists()) {
+	 * try { FileUtils.forceDelete(new File("db_output_revised.txt")); } catch
+	 * (IOException e) { // TODO Auto-generated catch block // e.printStackTrace();
+	 * } } }
+	 */
+    //----------------------------------------------------------------------------------------------
 	@Test
 	public void testConnectivity() throws IOException 
 	{
@@ -44,10 +41,12 @@ public class TestDBConnection
 	    if(dataSource != null)
 	    	value = true;
 
-	    File file = new File("db_output_revised.txt");
-	    FileUtils.write(file, "testConnectivity="+(value ? true : false), true); 
+	    yakshaAssert(currentTest(), value ? true : false, businessTestFile);
+	    
+	    //File file = new File("db_output_revised.txt");
+	    //FileUtils.write(file, "testConnectivity="+(value ? true : false), true); 
 	}
-
+    //----------------------------------------------------------------------------------------------
 	@Test
 	public void hibernateProperties() throws IOException 
 	{
@@ -62,11 +61,12 @@ public class TestDBConnection
 		if(properties != null)
 			value = true;
 
-	    File file = new File("db_output_revised.txt");
-	    FileUtils.write(file, "\nhibernateProperties="+(value ? true : false), true); 
+	    yakshaAssert(currentTest(), value ? true : false, businessTestFile);
+	    
+	    //File file = new File("db_output_revised.txt");
+	    //FileUtils.write(file, "\nhibernateProperties="+(value ? true : false), true); 
 	}
-
-	
+    //----------------------------------------------------------------------------------------------	
 	@SuppressWarnings("unchecked")
 	@Test 
 	public void testSqlException() throws IOException 
@@ -81,7 +81,9 @@ public class TestDBConnection
 		if(size != null)
 			value = true;
 		
-		File file = new File("db_output_revised.txt");
-		FileUtils.write(file, "\ntestSqlException="+(value ? true : false), true); 
+	    yakshaAssert(currentTest(), value ? true : false, businessTestFile);
+
+	    //File file = new File("db_output_revised.txt");
+		//FileUtils.write(file, "\ntestSqlException="+(value ? true : false), true); 
 	}
 }

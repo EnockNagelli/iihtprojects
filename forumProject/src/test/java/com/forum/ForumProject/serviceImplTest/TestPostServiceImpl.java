@@ -1,13 +1,16 @@
 package com.forum.ForumProject.serviceImplTest;
 
+import static com.forum.ForumProject.UtilTestClass.TestUtils.businessTestFile;
+import static com.forum.ForumProject.UtilTestClass.TestUtils.currentTest;
+import static com.forum.ForumProject.UtilTestClass.TestUtils.yakshaAssert;
 import static org.mockito.Mockito.when;
 
-import java.io.File;
-import java.io.IOException;
+//import java.io.File;
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -23,28 +26,21 @@ import com.forum.forumProject.service.PostServiceImpl;
 public class TestPostServiceImpl 
 {
 	@Mock
-	private PostService postService;
+	private PostDao postDao;
 
 	@Mock
-	private PostDao postDao;
+	private PostService postService;
 
 	@InjectMocks
 	private PostServiceImpl postServiceImpl;
 
     //----------------------------------------------------------------------------------------------
-    static 
-	{
-		File file = new File("posts_output_revised.txt");
-		if (file.exists()) {
-			try {
-				FileUtils.forceDelete(new File("posts_output_revised.txt"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				// e.printStackTrace();
-			}
-		}
-	}    
-
+	/*
+	 * static { File file = new File("posts_output_revised.txt"); if (file.exists())
+	 * { try { FileUtils.forceDelete(new File("posts_output_revised.txt")); } catch
+	 * (IOException e) { // TODO Auto-generated catch block // e.printStackTrace();
+	 * } } }
+	 */
 	// -------------------------------------------------------------------------------------------------------------------
 	@Before
 	public void setup() 
@@ -60,8 +56,10 @@ public class TestPostServiceImpl
 		
 		List<Posts> postFromdb = postDao.getAllPosts();
 		
-		File file = new File("posts_output_revised.txt");
-		FileUtils.write(file, "\ntestSavePostsImplTest="+(postFromdb != null ? true : false), true);
+	    yakshaAssert(currentTest(), "\ntestSavePostsImplTest="+(postFromdb != null ? true : false), businessTestFile);
+
+	    //File file = new File("posts_output_revised.txt");
+		//FileUtils.write(file, "\ntestSavePostsImplTest="+(postFromdb != null ? true : false), true);
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -70,8 +68,10 @@ public class TestPostServiceImpl
 	{
 		boolean value = postServiceImpl.savePost(MasterData.getPostDetails());
 		
-		File file = new File("posts_output_revised.txt");
-	    FileUtils.write(file, "\ntestPostServiceImplTest="+(value ? true : false), true);
+	    yakshaAssert(currentTest(), "\ntestPostServiceImplTest="+(value ? true : false), businessTestFile);
+
+	    //File file = new File("posts_output_revised.txt");
+	    //FileUtils.write(file, "\ntestPostServiceImplTest="+(value ? true : false), true);
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -86,8 +86,10 @@ public class TestPostServiceImpl
 		
 		List<Posts> postFromdb = postDao.getAllPosts();
 
-		File file = new File("posts_output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllPostsImplTest="+(postFromdb==list ? true : false), true);
+	    yakshaAssert(currentTest(), "\ntestViewAllPostsImplTest="+(postFromdb==list ? true : false), businessTestFile);
+
+	    //File file = new File("posts_output_revised.txt");
+		//FileUtils.write(file, "\ntestViewAllPostsImplTest="+(postFromdb==list ? true : false), true);
 	}
 	
 	
@@ -100,8 +102,10 @@ public class TestPostServiceImpl
 	  
 		List<Posts> postsFromdb = postDao.getAllPosts();
 	  
-		File file = new File("posts_output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllPostsImplTest1="+(postsFromdb==list ? true : false), true); 
+	    yakshaAssert(currentTest(), "\ntestViewAllPostsImplTest1="+(postsFromdb==list ? true : false), businessTestFile);
+
+	    //File file = new File("posts_output_revised.txt");
+		//FileUtils.write(file, "\ntestViewAllPostsImplTest1="+(postsFromdb==list ? true : false), true); 
 	}
 	  
 	@Test 
@@ -111,7 +115,9 @@ public class TestPostServiceImpl
 	  
 		List<Posts> postsFromdb = postDao.getAllPosts();
 	  
-		File file = new File("posts_output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllPostsImplTest2="+(postsFromdb==null ? true : false), true);
+	    yakshaAssert(currentTest(), "\ntestViewAllPostsImplTest2="+(postsFromdb==null ? true : false), businessTestFile);
+
+	    //File file = new File("posts_output_revised.txt");
+		//FileUtils.write(file, "\ntestViewAllPostsImplTest2="+(postsFromdb==null ? true : false), true);
 	} 
 }

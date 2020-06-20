@@ -13,12 +13,20 @@
 		<div class="container">
 		  <h2>Add Comment</h2>
 		  <form action="saveComment" class="was-validated" method=post>
+
+		    <div class="form-group">
+		      <label for="posts">Post ID</label>
+		      <input type="text" class="form-control" id="postId" value="${id}" name="vpostId" required>
+		      <!-- <input type="text" class="form-control" id="postId" name="vpostId" required> -->
+		    </div>
+
 		    <div class="form-group">
 		      <label for="posts">Post Comment</label>
 		      <textarea class="form-control" rows="7" id="comment" placeholder="Enter Your Comments" name="vcomments" required></textarea>
 		      <div class="valid-feedback">Valid.</div>
 		      <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
 		    </div>
+
 		    <div class="form-group">
 		      <label for="tags">Tags</label>
 		      <input type="text" class="form-control" id="tags" placeholder="Enter Tags" name="vtags" required>

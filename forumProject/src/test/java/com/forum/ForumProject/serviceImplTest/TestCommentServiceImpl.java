@@ -1,13 +1,16 @@
 package com.forum.ForumProject.serviceImplTest;
 
+import static com.forum.ForumProject.UtilTestClass.TestUtils.businessTestFile;
+import static com.forum.ForumProject.UtilTestClass.TestUtils.currentTest;
+import static com.forum.ForumProject.UtilTestClass.TestUtils.yakshaAssert;
 import static org.mockito.Mockito.when;
 
-import java.io.File;
-import java.io.IOException;
+//import java.io.File;
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -32,19 +35,12 @@ public class TestCommentServiceImpl
 	private CommentServiceImpl commentServiceImpl;
 
 	//--------------------------------------------------------------------------------------------------------------------------------
-	static 
-	{
-		File file = new File("comments_output_revised.txt");
-		if (file.exists()) {
-			try {
-				FileUtils.forceDelete(new File("comments_output_revised.txt"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				// e.printStackTrace();
-			}
-		}
-	}
-
+	/*
+	 * static { File file = new File("comments_output_revised.txt"); if
+	 * (file.exists()) { try { FileUtils.forceDelete(new
+	 * File("comments_output_revised.txt")); } catch (IOException e) { // TODO
+	 * Auto-generated catch block // e.printStackTrace(); } } }
+	 */
 	// -------------------------------------------------------------------------------------------------------------------
 	@Before
 	public void setup() 
@@ -58,8 +54,10 @@ public class TestCommentServiceImpl
 	{
 		boolean value = commentServiceImpl.saveComment(MasterData.getCommentDetails());
 		
-		File file = new File("comments_output_revised.txt");
-	    FileUtils.write(file, "\ntestCommentServiceImplTest="+(value ? true : false), true);
+	    yakshaAssert(currentTest(), "\ntestCommentServiceImplTest="+(value ? true : false), businessTestFile);
+
+	    //File file = new File("comments_output_revised.txt");
+	    //FileUtils.write(file, "\ntestCommentServiceImplTest="+(value ? true : false), true);
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -74,8 +72,10 @@ public class TestCommentServiceImpl
 		
 		List<Comments> commentFromdb = commentsDao.getAllComments();
 	
-		File file = new File("comments_output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllCommentsImplTest="+(commentFromdb==list ? true : false), true); 
+	    yakshaAssert(currentTest(), "\ntestViewAllCommentsImplTest="+(commentFromdb==list ? true : false), businessTestFile);
+
+	    //File file = new File("comments_output_revised.txt");
+		//FileUtils.write(file, "\ntestViewAllCommentsImplTest="+(commentFromdb==list ? true : false), true); 
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -87,8 +87,10 @@ public class TestCommentServiceImpl
 		when(commentServiceImpl.getAllComments()).thenReturn((List<Comments>) list);
 		List<Comments> commentFromdb = commentsDao.getAllComments();
 
-		File file = new File("comments_output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllCommentsImplTest1="+(commentFromdb==list ? true : false), true); 
+	    yakshaAssert(currentTest(), "\ntestViewAllCommentsImplTest1="+(commentFromdb==list ? true : false), businessTestFile);
+
+	    //File file = new File("comments_output_revised.txt");
+		//FileUtils.write(file, "\ntestViewAllCommentsImplTest1="+(commentFromdb==list ? true : false), true); 
 	}
 	 	
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -100,8 +102,10 @@ public class TestCommentServiceImpl
 		  
 		List<Comments> commentFromdb = commentServiceImpl.getAllComments();
 
-		File file = new File("comments_output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllCommentsImplTest2="+(commentFromdb==null ? true : false), true);
+	    yakshaAssert(currentTest(), "\ntestViewAllCommentsImplTest2="+(commentFromdb==null ? true : false), businessTestFile);
+
+	    //File file = new File("comments_output_revised.txt");
+		//FileUtils.write(file, "\ntestViewAllCommentsImplTest2="+(commentFromdb==null ? true : false), true);
 	}
 	 	
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -112,7 +116,9 @@ public class TestCommentServiceImpl
 		
 		List<Comments> commentFromdb = commentsDao.getAllComments();
 		
-		File file = new File("comments_output_revised.txt");
-		FileUtils.write(file, "\ntestSaveCommentsImplTest="+(commentFromdb != null ? true : false), true);
+	    yakshaAssert(currentTest(), "\ntestSaveCommentsImplTest="+(commentFromdb != null ? true : false), businessTestFile);
+
+	    //File file = new File("comments_output_revised.txt");
+		//FileUtils.write(file, "\ntestSaveCommentsImplTest="+(commentFromdb != null ? true : false), true);
 	}
 }

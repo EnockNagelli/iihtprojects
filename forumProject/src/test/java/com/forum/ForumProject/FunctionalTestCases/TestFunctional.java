@@ -1,18 +1,22 @@
 package com.forum.ForumProject.FunctionalTestCases;
 
+import static com.forum.ForumProject.UtilTestClass.TestUtils.businessTestFile;
+import static com.forum.ForumProject.UtilTestClass.TestUtils.currentTest;
+import static com.forum.ForumProject.UtilTestClass.TestUtils.yakshaAssert;
 import static org.mockito.Mockito.when;
 
-import java.io.File;
-import java.io.IOException;
+//import java.io.File;
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+//import org.springframework.http.HttpStatus;
 
 import com.forum.ForumProject.UtilTestClass.MasterData;
 import com.forum.forumProject.dao.CommentsDao;
@@ -38,19 +42,11 @@ public class TestFunctional
 	private CommentServiceImpl commentServiceImpl;
 	
 	//--------------------------------------------------------------------------------------------------------------------------------
-	static 
-	{
-		File file = new File("output_revised.txt");
-		if (file.exists()) {
-			try {
-				FileUtils.forceDelete(new File("output_revised.txt"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				// e.printStackTrace();
-			}
-		}
-	}
-	
+	/*
+	 * static { File file = new File("output_revised.txt"); if (file.exists()) { try
+	 * { FileUtils.forceDelete(new File("output_revised.txt")); } catch (IOException
+	 * e) { // TODO Auto-generated catch block // e.printStackTrace(); } } }
+	 */
 	//--------------------------------------------------------------------------------------------------------------------------------
 	@Before
 	public void init() {
@@ -62,8 +58,11 @@ public class TestFunctional
 	public void testSavePosts() throws Exception 
 	{
 		boolean value = postServiceImpl.savePost(MasterData.getPostDetails());
-		File file = new File("output_revised.txt");
-	    FileUtils.write(file, "\ntestSavePosts="+(value ? true : false), true); 
+		
+	    yakshaAssert(currentTest(), "\ntestSavePosts="+(value ? true : false), businessTestFile);
+		
+		//File file = new File("output_revised.txt");
+	    //FileUtils.write(file, "\ntestSavePosts="+(value ? true : false), true); 
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -71,8 +70,11 @@ public class TestFunctional
 	public void testSaveComments() throws Exception 
 	{
 		boolean value = commentServiceImpl.saveComment(MasterData.getCommentDetails());
-		File file = new File("output_revised.txt");
-	    FileUtils.write(file, "\ntestSaveComments="+(value ? true : false), true); 
+
+	    yakshaAssert(currentTest(), "\ntestSaveComments="+(value ? true : false), businessTestFile);
+
+		//File file = new File("output_revised.txt");
+	    //FileUtils.write(file, "\ntestSaveComments="+(value ? true : false), true); 
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -85,8 +87,11 @@ public class TestFunctional
 	    
 	    when(postDao.getAllPosts()).thenReturn((List<Posts>) list);
 		List<Posts> postFromdb = postServiceImpl.getAllPosts();
-		File file = new File("output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllPosts="+(postFromdb==list ? true : false), true); 
+
+	    yakshaAssert(currentTest(), "\ntestViewAllPosts="+(postFromdb==list ? true : false), businessTestFile);
+
+	    //File file = new File("output_revised.txt");
+		//FileUtils.write(file, "\ntestViewAllPosts="+(postFromdb==list ? true : false), true); 
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -99,8 +104,11 @@ public class TestFunctional
 	    
 	    when(commentsDao.getAllComments()).thenReturn((List<Comments>) list);
 		List<Comments> commentFromdb = commentServiceImpl.getAllComments();
-		File file = new File("output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllComments="+(commentFromdb==list ? true : false), true); 
+
+	    yakshaAssert(currentTest(), "\ntestViewAllComments="+(commentFromdb==list ? true : false), businessTestFile);
+
+	    //File file = new File("output_revised.txt");
+		//FileUtils.write(file, "\ntestViewAllComments="+(commentFromdb==list ? true : false), true); 
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -113,7 +121,10 @@ public class TestFunctional
 	    
 	    when(postDao.getAllPosts()).thenReturn((List<Posts>) list);
 		List<Posts> discussionFromdb = postServiceImpl.getAllPosts();
-		File file = new File("output_revised.txt");
-		FileUtils.write(file, "\ntestViewAllDiscussions="+(discussionFromdb==list ? true : false), true); 
+
+	    yakshaAssert(currentTest(), "\ntestViewAllDiscussions="+(discussionFromdb==list ? true : false), businessTestFile);
+
+	    //File file = new File("output_revised.txt");
+		//FileUtils.write(file, "\ntestViewAllDiscussions="+(discussionFromdb==list ? true : false), true); 
 	}	
 }

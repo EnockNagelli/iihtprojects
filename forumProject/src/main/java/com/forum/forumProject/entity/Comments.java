@@ -21,16 +21,34 @@ public class Comments implements Serializable
 	@Column(name = "commentid")
 	private int commentId;
 	
-	@Size(min = 5, max = 30)
+	@Column(name = "postid")
+	private int postId;
+
+	@Size(min = 1, max = 50)
 	@Column(name = "tags")
 	private String tags;
 	
-	@Size(min = 5, max = 200)
+	@Size(min = 1, max = 200)
 	@Column(name = "visitorcomment")
 	private String visitorComment;
-
+	
 	public Comments() {
 		super();
+	}
+	
+	public Comments(int commentId, String tags, String visitorComment, int postId) {
+		super();
+		this.commentId = commentId;
+		this.postId = postId;
+		this.tags = tags;
+		this.visitorComment = visitorComment;
+	}
+
+	public int getPostId() {
+		return postId;
+	}
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 
 	public int getCommentId() {

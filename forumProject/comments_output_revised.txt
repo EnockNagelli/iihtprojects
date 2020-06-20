@@ -1,6 +1,0 @@
-
-testSaveCommentsImplTest=true
-testCommentServiceImplTest=true
-testViewAllCommentsImplTest=true
-testViewAllCommentsImplTest1=true
-testViewAllCommentsImplTest2=true

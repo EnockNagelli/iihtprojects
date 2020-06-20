@@ -1,5 +1,0 @@
-
-testPostSuccess=false
-testCommentFailed=false
-testPostFailed=true
-testCommentSuccess=true

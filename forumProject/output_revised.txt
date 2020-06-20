@@ -1,6 +1,5 @@
 
-testViewAllPosts=true
-testViewAllDiscussions=true
-testViewAllComments=true
-testSaveComments=true
-testSavePosts=true
+testPostSuccess=true
+testCommentFailed=true
+testPostFailed=true
+testCommentSuccess=true
