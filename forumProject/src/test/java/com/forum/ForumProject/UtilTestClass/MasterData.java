@@ -27,6 +27,7 @@ public class MasterData
 	{
 		Comments comments = new Comments();
 		
+		comments.setPostId(comments.getPostId());
 		comments.setCommentId(comments.getCommentId());
 		comments.setTags("I Like it");
 		comments.setVisitorComment("Design Patterns are important in Java Technology");

@@ -27,7 +27,7 @@
 </head>
 <body>
 		<div class="container">
-			<h1><p class="bg-primary text-white text-center">Discussion Title Details</p></h1><br>
+			<p class="bg-primary text-white text-center"><h1>Discussion Title Details</h1><br>
 		</div>
 
  <div class="container-fluid">

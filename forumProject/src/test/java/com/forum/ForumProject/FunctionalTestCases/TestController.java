@@ -55,6 +55,9 @@ public class TestController
 	 * Auto-generated catch block // e.printStackTrace(); } } }
 	 */
 	// -------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform setup for Mockito initiations
+	 */
 	@Before
 	public void setup() throws Exception 
 	{
@@ -63,29 +66,39 @@ public class TestController
 	}
 
 	// -------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform Loading the landing page URL
+	 */
 	@Test
 	public void testLoadingPageUrl() throws Exception 
 	{
 		MvcResult result = this.mockMvc.perform(get("/")).andExpect(view().name("visitor")).andReturn();
 
-	    yakshaAssert(currentTest(), "\ntestLoadingPageUrl=" + (result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 
 	    //File file = new File("controller_output_revised.txt");
 		//FileUtils.write(file, "\ntestLoadingPageUrl=" + (result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);
 	}
 
 	// -------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform add new post in the Forum
+	 */
 	@Test 
 	public void testAddPost() throws Exception 
 	{ 
 		MvcResult result = this.mockMvc.perform(get("/addNewPost")).andExpect(status().isOk()).andExpect(view().name("addPost")).andReturn();
 	    
-	    yakshaAssert(currentTest(), "\ntestAddPost="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 
 	    //File file = new File("controller_output_revised.txt"); 
 		//FileUtils.write(file, "\ntestAddPost="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true); 
 	}
 
+	// -------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform save posts operation against MasterData 
+	 */
 	@Test 
 	public void testSavePosts() throws Exception 
 	{ 
@@ -99,12 +112,16 @@ public class TestController
 		
 		MvcResult result = this.mockMvc.perform(requestBuilder).andReturn();	
 		
-	    yakshaAssert(currentTest(), "\ntestSavePosts="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 
 		//File file = new File("controller_output_revised.txt"); 
 		//FileUtils.write(file, "\ntestSavePosts="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true); 		
 	}
 
+	// -------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform a case when there is successful save operation 
+	 */
 	@Test 
 	public void testSavePostsCase() throws Exception
 	{ 
@@ -118,12 +135,16 @@ public class TestController
 
 		MvcResult result = this.mockMvc.perform(requestBuilder).andReturn();
 
-	    yakshaAssert(currentTest(), "\ntestSavePostsCase="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 		
 		//File file = new File("controller_output_revised.txt"); 
 		//FileUtils.write(file, "\ntestSavePostsCase="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);
 	}
 
+	// -------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform view all the posts from database 
+	 */
 	@Test 
 	public void testViewAllPosts() throws Exception 
 	{ 
@@ -135,12 +156,16 @@ public class TestController
 		
 		MvcResult result = this.mockMvc.perform(get("/viewAllPosts")).andExpect(status().isOk()).andExpect(view().name("viewPosts")).andReturn();
 
-	    yakshaAssert(currentTest(), "\ntestViewAllPosts="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 
 		//File file = new File("controller_output_revised.txt"); 
 		//FileUtils.write(file, "\ntestViewAllPosts="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);
 	}
 
+	// -------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform check the null operation against view all posts operation 
+	 */
 	@Test 
 	public void testViewAllPostsCase() throws Exception 
 	{
@@ -148,24 +173,31 @@ public class TestController
 		
 		MvcResult result = this.mockMvc.perform(get("/viewAllPosts")).andExpect(status().isOk()).andExpect(view().name("visitor")).andReturn(); 
 		
-	    yakshaAssert(currentTest(), "\ntestViewAllPostsCase="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 
 		//File file = new File("controller_output_revised.txt"); 
 		//FileUtils.write(file, "\ntestViewAllPostsCase="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);
 	}
 	  
 	//-------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform add a comment and check the status of the operation 
+	 */
 	@Test 
 	public void testAddComments() throws Exception 
 	{
 		MvcResult result = this.mockMvc.perform(get("/addComments")).andExpect(status().isOk()).andExpect(view().name("addComment")).andReturn();
 		
-	    yakshaAssert(currentTest(), "\ntestAddComments="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 		
 		//File file = new File("controller_output_revised.txt"); 
 		//FileUtils.write(file, "\ntestAddComments="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true); 
 	}
 	  
+	//-------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform save a comment and check the status of the operation 
+	 */
 	@Test 
 	public void testSaveComments() throws Exception 
 	{ 
@@ -179,12 +211,16 @@ public class TestController
 
 		MvcResult result = this.mockMvc.perform(requestBuilder).andReturn();
 		
-	    yakshaAssert(currentTest(), "\ntestSaveComments="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 
 	    //File file = new File("controller_output_revised.txt"); 
 		//FileUtils.write(file, "\ntestSaveComments="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);
 	}
 
+	//-------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform add a comment and check the status of the operation 
+	 */
 	@Test 
 	public void testSaveCommentsCase() throws Exception 
 	{ 
@@ -198,13 +234,16 @@ public class TestController
 
 		MvcResult result = this.mockMvc.perform(requestBuilder).andReturn();
 		
-	    yakshaAssert(currentTest(), "\ntestSaveCommentsCase="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 
 		//File file = new File("controller_output_revised.txt"); 
 		//FileUtils.write(file, "\ntestSaveCommentsCase="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);	
 	}
 	  
 	//--------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform to view all the discussions of the posts 
+	 */
 	@Test 
 	public void testViewAllDiscussions() throws Exception 
 	{
@@ -216,12 +255,16 @@ public class TestController
 		
 		MvcResult result = this.mockMvc.perform(get("/viewDiscussion")).andExpect(status().isOk()).andExpect(view().name("viewDiscussionList")).andReturn();
 
-	    yakshaAssert(currentTest(), "\ntestViewAllDiscussions="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 
 		//File file = new File("controller_output_revised.txt"); 
 		//FileUtils.write(file, "\ntestViewAllDiscussions="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);
 	}
 	  
+	//-------------------------------------------------------------------------------------------------------------------
+	/*
+	 * Description	: This test is to perform add a comment and check the status of the operation 
+	 */
 	@Test 
 	public void testViewAllDiscussionsCase() throws Exception 
 	{
@@ -229,7 +272,7 @@ public class TestController
 		
 		MvcResult result = this.mockMvc.perform(get("/viewDiscussion")).andExpect(status().isOk()).andExpect(view().name("visitor")).andReturn(); 
 		
-	    yakshaAssert(currentTest(), "\ntestViewAllDiscussionsCase="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false, businessTestFile);
 
 	    //File file = new File("controller_output_revised.txt");
 		//FileUtils.write(file, "\ntestViewAllDiscussionsCase="+(result.getResponse().getStatus() == HttpStatus.OK.value() ? true : false), true);

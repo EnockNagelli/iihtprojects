@@ -54,7 +54,7 @@ public class TestCommentServiceImpl
 	{
 		boolean value = commentServiceImpl.saveComment(MasterData.getCommentDetails());
 		
-	    yakshaAssert(currentTest(), "\ntestCommentServiceImplTest="+(value ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), value ? true : false, businessTestFile);
 
 	    //File file = new File("comments_output_revised.txt");
 	    //FileUtils.write(file, "\ntestCommentServiceImplTest="+(value ? true : false), true);
@@ -72,7 +72,7 @@ public class TestCommentServiceImpl
 		
 		List<Comments> commentFromdb = commentsDao.getAllComments();
 	
-	    yakshaAssert(currentTest(), "\ntestViewAllCommentsImplTest="+(commentFromdb==list ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), commentFromdb==list ? true : false, businessTestFile);
 
 	    //File file = new File("comments_output_revised.txt");
 		//FileUtils.write(file, "\ntestViewAllCommentsImplTest="+(commentFromdb==list ? true : false), true); 
@@ -87,7 +87,7 @@ public class TestCommentServiceImpl
 		when(commentServiceImpl.getAllComments()).thenReturn((List<Comments>) list);
 		List<Comments> commentFromdb = commentsDao.getAllComments();
 
-	    yakshaAssert(currentTest(), "\ntestViewAllCommentsImplTest1="+(commentFromdb==list ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), commentFromdb==list ? true : false, businessTestFile);
 
 	    //File file = new File("comments_output_revised.txt");
 		//FileUtils.write(file, "\ntestViewAllCommentsImplTest1="+(commentFromdb==list ? true : false), true); 
@@ -102,7 +102,7 @@ public class TestCommentServiceImpl
 		  
 		List<Comments> commentFromdb = commentServiceImpl.getAllComments();
 
-	    yakshaAssert(currentTest(), "\ntestViewAllCommentsImplTest2="+(commentFromdb==null ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), commentFromdb==null ? true : false, businessTestFile);
 
 	    //File file = new File("comments_output_revised.txt");
 		//FileUtils.write(file, "\ntestViewAllCommentsImplTest2="+(commentFromdb==null ? true : false), true);
@@ -116,7 +116,7 @@ public class TestCommentServiceImpl
 		
 		List<Comments> commentFromdb = commentsDao.getAllComments();
 		
-	    yakshaAssert(currentTest(), "\ntestSaveCommentsImplTest="+(commentFromdb != null ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), commentFromdb != null ? true : false, businessTestFile);
 
 	    //File file = new File("comments_output_revised.txt");
 		//FileUtils.write(file, "\ntestSaveCommentsImplTest="+(commentFromdb != null ? true : false), true);

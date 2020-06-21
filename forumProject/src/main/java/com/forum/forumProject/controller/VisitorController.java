@@ -8,13 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.forum.forumProject.entity.Comments;
@@ -23,7 +20,8 @@ import com.forum.forumProject.service.CommentService;
 import com.forum.forumProject.service.PostService;
 
 @Controller
-public class VisitorController {
+public class VisitorController 
+{
 	@Autowired
 	private PostService postService;
 
@@ -43,6 +41,7 @@ public class VisitorController {
 		return new ModelAndView("addPost");
 	}
 
+	// --------------------------------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/savePost", method = RequestMethod.POST)
 	public String savePost(HttpServletRequest request) {
 		String title = request.getParameter("vtitle");
@@ -59,6 +58,7 @@ public class VisitorController {
 		return "visitor";
 	}
 
+	// --------------------------------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/viewAllPosts", method = RequestMethod.GET)
 	public ModelAndView getAllPosts() {
 		ModelAndView md = null;
@@ -78,44 +78,23 @@ public class VisitorController {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
-	/*
-	 * @RequestMapping(value = "/addComments", method = RequestMethod.GET) public
-	 * ModelAndView postComments() { return new ModelAndView("addComment"); }
-	 */
-	// --------------------------------------------------------------------------------------------------------------------
-	//public ModelAndView postComments(@RequestParam("id") int postId)
-	//public ModelAndView postComments(@RequestParam(value="id", required=false) int postId)
-	//public ModelAndView postComments(HttpServletRequest request)
-
 	@RequestMapping(value = "/addComments", method = RequestMethod.GET) 
-	public ModelAndView postComments(@RequestParam("id") int postId, Model model) 
+	public ModelAndView postComments(@RequestParam("id") int postId) 
 	{
-		//System.out.println("Post Id : "+request.getParameter("id"));
-		System.out.println("Post Id : "+postId); 
-		model.addAttribute("id", postId);
-		return new ModelAndView("addComment"); 
+		return new ModelAndView("addComment", "id", postId); 
 	}
 	 
 	// --------------------------------------------------------------------------------------------------------------------
-	/* public ModelAndView postComments(@RequestParam("id") int postId) */
-	/*
-	 * @RequestMapping(value = "/addComments", method = RequestMethod.GET) public
-	 * ModelAndView postComments(HttpServletRequest request) {
-	 * System.out.println("Post Id : "+request.getParameter("id")); return new
-	 * ModelAndView("addComment", "postid", postId); return new
-	 * ModelAndView("addComment"); }
-	 */
-	// --------------------------------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/saveComment", method = RequestMethod.POST)
-	public String saveComments(HttpServletRequest request) {
-
+	public String saveComments(HttpServletRequest request) 
+	{
 		int postId = Integer.parseInt(request.getParameter("vpostId"));
 		String visitorComment = request.getParameter("vcomments");
 		String tags = request.getParameter("vtags");
 
 		Comments comments = new Comments();
 
-		comments.setPostId(postId);;
+		comments.setPostId(postId);
 		comments.setTags(tags);
 		comments.setVisitorComment(visitorComment);
 

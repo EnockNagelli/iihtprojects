@@ -4,8 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>View GlobalTech Forum Posts</title>
-		<link type="text/css" href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet"/>
+		<title>View Online Forum Posts</title>
 		<style>
 			table {
 			  border-collapse: collapse;
@@ -38,7 +37,7 @@
 				        <th>Title</th>
 				        <th>Tags</th>
 				        <th>Post Description</th>
-				        <th>Post Comment | Like</th>
+				        <th>Post Comment</th>
 				    </tr>
 		           	<c:forEach var="listValue" items="${plist}">
 			            <tr>
@@ -55,13 +54,7 @@
 			                    <c:out value="${listValue.postDescription}" /> 
 			                </td>
 			                <td>
-			                    <!-- <a href="addComments">Post Comment</a> -->
-
-			                    <a href="addComments?id=${listValue.postId}" style='text-decoration: none;'>Comment</a> | <a href="updateLike" style='text-decoration: none;'>Like</a>
-			                    
-				  				<%-- <button class="btn btn-info" onclick="location.href='addComments/id=${listValue.postId}'">Post Comment</button> --%>
-
-			                    <%-- <a href="addComments"><img src="${pageContext.request.contextPath}/resources/images/comment.jpg" class="img-rounded"></img></a> --%>
+			                    <a href="addComments?id=${listValue.postId}" style='text-decoration: none;'>Comment</a>
 			                </td>
 			            </tr>
 		           	</c:forEach>

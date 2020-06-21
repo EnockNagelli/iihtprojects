@@ -59,7 +59,7 @@ public class TestFunctional
 	{
 		boolean value = postServiceImpl.savePost(MasterData.getPostDetails());
 		
-	    yakshaAssert(currentTest(), "\ntestSavePosts="+(value ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), value ? true : false, businessTestFile);
 		
 		//File file = new File("output_revised.txt");
 	    //FileUtils.write(file, "\ntestSavePosts="+(value ? true : false), true); 
@@ -71,7 +71,7 @@ public class TestFunctional
 	{
 		boolean value = commentServiceImpl.saveComment(MasterData.getCommentDetails());
 
-	    yakshaAssert(currentTest(), "\ntestSaveComments="+(value ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), value ? true : false, businessTestFile);
 
 		//File file = new File("output_revised.txt");
 	    //FileUtils.write(file, "\ntestSaveComments="+(value ? true : false), true); 
@@ -88,7 +88,7 @@ public class TestFunctional
 	    when(postDao.getAllPosts()).thenReturn((List<Posts>) list);
 		List<Posts> postFromdb = postServiceImpl.getAllPosts();
 
-	    yakshaAssert(currentTest(), "\ntestViewAllPosts="+(postFromdb==list ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), postFromdb==list ? true : false, businessTestFile);
 
 	    //File file = new File("output_revised.txt");
 		//FileUtils.write(file, "\ntestViewAllPosts="+(postFromdb==list ? true : false), true); 
@@ -105,7 +105,7 @@ public class TestFunctional
 	    when(commentsDao.getAllComments()).thenReturn((List<Comments>) list);
 		List<Comments> commentFromdb = commentServiceImpl.getAllComments();
 
-	    yakshaAssert(currentTest(), "\ntestViewAllComments="+(commentFromdb==list ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), commentFromdb==list ? true : false, businessTestFile);
 
 	    //File file = new File("output_revised.txt");
 		//FileUtils.write(file, "\ntestViewAllComments="+(commentFromdb==list ? true : false), true); 
@@ -122,7 +122,7 @@ public class TestFunctional
 	    when(postDao.getAllPosts()).thenReturn((List<Posts>) list);
 		List<Posts> discussionFromdb = postServiceImpl.getAllPosts();
 
-	    yakshaAssert(currentTest(), "\ntestViewAllDiscussions="+(discussionFromdb==list ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), discussionFromdb==list ? true : false, businessTestFile);
 
 	    //File file = new File("output_revised.txt");
 		//FileUtils.write(file, "\ntestViewAllDiscussions="+(discussionFromdb==list ? true : false), true); 

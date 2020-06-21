@@ -56,7 +56,7 @@ public class TestPostServiceImpl
 		
 		List<Posts> postFromdb = postDao.getAllPosts();
 		
-	    yakshaAssert(currentTest(), "\ntestSavePostsImplTest="+(postFromdb != null ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), postFromdb != null ? true : false, businessTestFile);
 
 	    //File file = new File("posts_output_revised.txt");
 		//FileUtils.write(file, "\ntestSavePostsImplTest="+(postFromdb != null ? true : false), true);
@@ -68,7 +68,7 @@ public class TestPostServiceImpl
 	{
 		boolean value = postServiceImpl.savePost(MasterData.getPostDetails());
 		
-	    yakshaAssert(currentTest(), "\ntestPostServiceImplTest="+(value ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), value ? true : false, businessTestFile);
 
 	    //File file = new File("posts_output_revised.txt");
 	    //FileUtils.write(file, "\ntestPostServiceImplTest="+(value ? true : false), true);
@@ -86,7 +86,7 @@ public class TestPostServiceImpl
 		
 		List<Posts> postFromdb = postDao.getAllPosts();
 
-	    yakshaAssert(currentTest(), "\ntestViewAllPostsImplTest="+(postFromdb==list ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), postFromdb==list ? true : false, businessTestFile);
 
 	    //File file = new File("posts_output_revised.txt");
 		//FileUtils.write(file, "\ntestViewAllPostsImplTest="+(postFromdb==list ? true : false), true);
@@ -102,7 +102,7 @@ public class TestPostServiceImpl
 	  
 		List<Posts> postsFromdb = postDao.getAllPosts();
 	  
-	    yakshaAssert(currentTest(), "\ntestViewAllPostsImplTest1="+(postsFromdb==list ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), postsFromdb==list ? true : false, businessTestFile);
 
 	    //File file = new File("posts_output_revised.txt");
 		//FileUtils.write(file, "\ntestViewAllPostsImplTest1="+(postsFromdb==list ? true : false), true); 
@@ -115,7 +115,7 @@ public class TestPostServiceImpl
 	  
 		List<Posts> postsFromdb = postDao.getAllPosts();
 	  
-	    yakshaAssert(currentTest(), "\ntestViewAllPostsImplTest2="+(postsFromdb==null ? true : false), businessTestFile);
+	    yakshaAssert(currentTest(), postsFromdb==null ? true : false, businessTestFile);
 
 	    //File file = new File("posts_output_revised.txt");
 		//FileUtils.write(file, "\ntestViewAllPostsImplTest2="+(postsFromdb==null ? true : false), true);

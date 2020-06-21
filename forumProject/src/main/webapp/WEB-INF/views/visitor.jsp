@@ -10,22 +10,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </head>
     <body>
-<!--         <p>
-        	<a style=text-decoration:none href="addPost">1. Add Post</a><br><br>
-        	<a style=text-decoration:none href="viewPosts">2. View Posts</a><br><br>
-        	<a style=text-decoration:none href="addComments">3. Add Comments</a><br><br>
-        	<a style=text-decoration:none href="viewDiscussion">4. View Discussion</a>
-        </p>
- -->
         <div class="container">
 			<br>
-				<!-- <p class="bg-danger text-white text-center form-rounded"><b>Online Forum Application</b></p><br> -->
-<!-- 			<div class="card bg-danger text-white text-center form-rounded" style="width: 70rem; height: 4rem">
-    			<div class="card-body">
-    				<h1><b>Online Forum Application</b></h1>
-    			</div>
-  			</div><br><br> -->
-  			
    			<div style="height: 100px;">
 				<div class="bg-danger h-50 d-inline-block text-white text-center form-rounded" style="width: 1120px;"><h2>Online Forum Application</h2></div>
 			</div>
@@ -33,14 +19,12 @@
 				<div class="col-sm-3">
 					<a href="addNewPost"     class="btn btn-info btn-md btn-block" role="button"><b>Add Post</b></a><br>
 					<a href="viewAllPosts" 	 class="btn btn-info btn-md btn-block" role="button"><b>View Posts</b></a><br>
-					<a href="addComments" 	 class="btn btn-info btn-md btn-block" role="button"><b>Add Comments</b></a><br>
 					<a href="viewDiscussion" class="btn btn-info btn-md btn-block" role="button"><b>View Discussion</b></a><br><br>
 				</div>
 			</div>
    			<div style="height: 100px;">
 				<div class="bg-primary h-50 text-white text-right form-rounded"><h1>IIHT</h1><br></div>
-			</div>	
+			</div>
 		</div>        
-        
     </body>
 </html>
