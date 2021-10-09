@@ -1,0 +1,9 @@
+
+testSaveCommentsImplTest=false
+testCommentServiceImplTest=false
+testGetPostObject=false
+testSavePostService=false
+testSavePosts1=false
+testSavePosts=true
+testViewAllPostsImpl2=true
+testViewAllPostsImpl=true
